@@ -1,0 +1,23 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\IhnRTS\Program.cs">
+    <Files>
+      <File FileName="IhnEngine\Ihn.cs" Line="51" Column="50" />
+      <File FileName="..\..\Games\IhnEngine\IhnRTS\Program.cs" Line="25" Column="1" />
+      <File FileName="IhnEngine\ISystem.cs" Line="16" Column="41" />
+      <File FileName="IhnEngine\SystemRenderSprite.cs" Line="17" Column="29" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="IhnEngine" expanded="True" />
+          <Node name="IhnRTS" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
