@@ -1,4 +1,5 @@
-IhnLib
-======
+=======
+IhnEngine
+=========
 
-Entity Component System engine for MonoGame.
+C# Entity Component Engine
