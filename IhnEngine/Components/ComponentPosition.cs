@@ -7,14 +7,14 @@
 // Copyright (c) 2013 Gigimoi
 using System;
 
-namespace IhnEngine {
+namespace IhnLib {
 	public class ComponentPosition : Component{
-		public ComponentPosition(int x, int y) {
+		public ComponentPosition(float x, float y) {
 			X = x;
 			Y = y;
 		}
-		public int X;
-		public int Y;
+		public float X;
+		public float Y;
 	}
 }
 

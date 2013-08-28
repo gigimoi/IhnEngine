@@ -7,7 +7,7 @@
 // Copyright (c) 2013 Gigimoi
 using System;
 
-namespace IhnEngine {
+namespace IhnLib {
 	public abstract class Component {
 	}
 }

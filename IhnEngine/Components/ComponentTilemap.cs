@@ -1,5 +1,5 @@
 //
-// ISystem.cs
+// ComponentTilemap.cs
 //
 // Author:
 //       Gigimoi <gigimoigames@gmail.com>
@@ -10,10 +10,10 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace IhnLib {
-	public interface ISystem {
-		void Update(Ihn ihn, Entity entity);
-		void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity);
-		List<Type> RequiredComponents { get; }
+	public class ComponentTilemap : Component {
+		public bool Enabled = true;
+		public List<TileType> Tiles = new List<TileType>();
+		public int Selected;
 	}
 }
 

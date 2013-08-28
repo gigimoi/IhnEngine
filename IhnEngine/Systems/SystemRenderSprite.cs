@@ -10,13 +10,20 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace IhnEngine {
+namespace IhnLib {
 	public class SystemRenderSprite : ISystem{
-		public void Update(Entity entity) { }
-		public void Render(SpriteBatch spriteBatch, Entity entity) {
-			var pos = entity.GetComponent<ComponentPosition>();
-			var sprite = entity.GetComponent<ComponentSprite>();
-			spriteBatch.Draw(sprite.Texture, new Vector2(pos.X, pos.Y), sprite.Source, Color.White);
+		public void Update(Ihn ihn, Entity entity) { }
+		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
+			var pos = entity.GetComp<ComponentPosition>();
+			var sprite = entity.GetComp<ComponentSprite>();
+			if(entity.HasComp<ComponentSize>()) {
+				var size = entity.GetComp<ComponentSize>();
+
+				spriteBatch.Draw(sprite.Texture, new Rectangle((int)pos.X, (int)pos.Y, size.Width, size.Height), sprite.Source, Color.White, 0, sprite.Origin, SpriteEffects.None, 0);
+			}
+			else {
+				spriteBatch.Draw(sprite.Texture, new Rectangle((int)pos.X, (int)pos.Y, sprite.Source.Width, sprite.Source.Height), sprite.Source, Color.White, 0, sprite.Origin, SpriteEffects.None, 0);
+			}
 		}
 		public List<Type> RequiredComponents {
 			get {

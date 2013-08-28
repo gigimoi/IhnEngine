@@ -1,5 +1,5 @@
 //
-// ComponentHealth.cs
+// ComponentSolid.cs
 //
 // Author:
 //       Gigimoi <gigimoigames@gmail.com>
@@ -8,9 +8,7 @@
 using System;
 
 namespace IhnLib {
-	public class ComponentHealth {
-		public int Health;
-		public int MaxHealth;
+	public class ComponentSolid : Component{
 	}
 }
 

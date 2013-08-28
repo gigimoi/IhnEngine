@@ -9,13 +9,14 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using IhnLib;
 
 namespace IhnEngine {
 	public class SystemRenderSprite : ISystem{
-		public void Update(Entity entity) { }
-		public void Render(SpriteBatch spriteBatch, Entity entity) {
-			var pos = entity.GetComponent<ComponentPosition>();
-			var sprite = entity.GetComponent<ComponentSprite>();
+		public void Update(Ihn ihn, Entity entity) { }
+		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
+			var pos = entity.GetComp<ComponentPosition>();
+			var sprite = entity.GetComp<ComponentSprite>();
 			spriteBatch.Draw(sprite.Texture, new Vector2(pos.X, pos.Y), sprite.Source, Color.White);
 		}
 		public List<Type> RequiredComponents {

@@ -7,8 +7,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EF62FECE-E4B7-4A43-8B5B-75BAF2D99D53}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>IhnEngine</RootNamespace>
+    <RootNamespace>IhnLib</RootNamespace>
     <AssemblyName>IhnEngine</AssemblyName>
+    <newfilesearch>OnLoadAutoInsert</newfilesearch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,7 @@
     <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,6 +50,38 @@
     <Compile Include="Components\ComponentSprite.cs" />
     <Compile Include="Systems\SystemRenderSprite.cs" />
     <Compile Include="Systems\SystemVelocityMovement.cs" />
+    <Compile Include="Components\ComponentSize.cs" />
+    <Compile Include="KeyHelper.cs" />
+    <Compile Include="Components\ComponentKeyboardMovement.cs" />
+    <Compile Include="Systems\SystemKeyboardMovement.cs" />
+    <Compile Include="MouseHelper.cs" />
+    <Compile Include="Components\ComponentRadius.cs" />
+    <Compile Include="SystemRenderSprite.cs" />
+    <Compile Include="Components\ComponentTilesetSprite.cs" />
+    <Compile Include="Systems\SystemRenderTilesetSprite.cs">
+      <DependentUpon>SystemDefault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\SystemDefault.cs" />
+    <Compile Include="Components\ComponentDirection.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="Components\ComponentTopDownEightDirSprite.cs" />
+    <Compile Include="Systems\SystemRenderTopDownEightDirSprite.cs" />
+    <Compile Include="DirectionHelper.cs" />
+    <Compile Include="Components\ComponentAABB.cs" />
+    <Compile Include="Components\ComponentSolid.cs" />
+    <Compile Include="TileType.cs" />
+    <Compile Include="Art.cs" />
+    <Compile Include="EventManager.cs" />
+    <Compile Include="Pathfinding.cs" />
+    <Compile Include="Components\ComponentZombieAI.cs" />
+    <Compile Include="Systems\SystemZombieAI.cs" />
+    <Compile Include="Systems\SystemTilemap.cs" />
+    <Compile Include="Components\ComponentTilemap.cs" />
+    <Compile Include="ComponentString.cs" />
+    <Compile Include="Components\ComponentGravity.cs" />
+    <Compile Include="Systems\SystemGravity.cs" />
+    <Compile Include="Systems\SystemFriction.cs" />
+    <Compile Include="CollisionHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

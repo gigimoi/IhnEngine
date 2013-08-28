@@ -1,17 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\IhnRTS\Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\ThisMessageWillSelfDestruct\Program.cs">
     <Files>
-      <File FileName="IhnEngine\Ihn.cs" Line="51" Column="50" />
-      <File FileName="..\..\Games\IhnEngine\IhnRTS\Program.cs" Line="25" Column="1" />
-      <File FileName="IhnEngine\ISystem.cs" Line="16" Column="41" />
-      <File FileName="IhnEngine\SystemRenderSprite.cs" Line="17" Column="29" />
+      <File FileName="c:\Programming\Engines\IhnEngine\IhnEngine\Rsc.cs" Line="1" Column="1" />
+      <File FileName="..\..\Games\IhnEngine\ThisMessageWillSelfDestruct\Program.cs" Line="29" Column="23" />
+      <File FileName="..\..\Games\IhnEngine\BloodGrove\Program.cs" Line="1" Column="1" />
+      <File FileName="c:\Programming\Engines\IhnEngine\IhnEngine\Ihn.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="IhnEngine" expanded="True" />
-          <Node name="IhnRTS" expanded="True" selected="True" />
+          <Node name="BloodGrove" expanded="True" />
+          <Node name="IhnLib" expanded="True">
+            <Node name="Components" expanded="True" />
+          </Node>
+          <Node name="ThisMessageWillSelfDestruct" expanded="True">
+            <Node name="Program.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>Click here to add a new watch</Value>
         </State>
       </Pad>
     </Pads>
