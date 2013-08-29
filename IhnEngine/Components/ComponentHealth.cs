@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentHealth {
 		public int Health;
 		public int MaxHealth;

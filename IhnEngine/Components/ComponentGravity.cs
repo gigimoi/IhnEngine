@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentGravity : Component{
 		public static float GlobalMultiplier = 0.2f;
 		public float Multiplier = 1;

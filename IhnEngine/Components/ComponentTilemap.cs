@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentTilemap : Component {
 		public bool Enabled = true;
 		public List<TileType> Tiles = new List<TileType>();

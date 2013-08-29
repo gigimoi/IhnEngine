@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentVelocity : Component{
 		public ComponentVelocity() : this(0, 0) { }
 		public ComponentVelocity(float x, float y) {
@@ -16,12 +17,6 @@ namespace IhnLib {
 		}
 		public float X;
 		public float Y;
-		public override string Save() {
-			return "{" + X + "," + "Y" + "}";
-		}
-		public override void Load() {
-
-		}
 	}
 }
 

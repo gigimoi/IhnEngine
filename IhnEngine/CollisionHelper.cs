@@ -7,6 +7,7 @@
 // Copyright (c) 2013 Gigimoi
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace IhnLib {
 	public class CollisionHelper {
@@ -29,10 +30,10 @@ namespace IhnLib {
 			}
 			else if(entity.HasComp<ComponentTopDownEightDirSprite>()) {
 				var spr = entity.GetComp<ComponentTopDownEightDirSprite>();
-				x -= spr.Texture.Width / 8;
-				y -= spr.Texture.Height / 4;
-				w = spr.Texture.Width / 4;
-				h = spr.Texture.Height / 2;
+				x -= Rsc.Load<Texture2D>(spr.Texture).Width / 8;
+				y -= Rsc.Load<Texture2D>(spr.Texture).Height / 4;
+				w = Rsc.Load<Texture2D>(spr.Texture).Width / 4;
+				h = Rsc.Load<Texture2D>(spr.Texture).Height / 2;
 			}
 			else if(entity.HasComp<ComponentSize>()) {
 				w = entity.GetComp<ComponentSize>().Width;
@@ -42,8 +43,8 @@ namespace IhnLib {
 				var spr = entity.GetComp<ComponentSprite>();
 				x -= spr.Origin.X;
 				y -= spr.Origin.Y;
-				w = spr.Texture.Width;
-				h = spr.Texture.Height;
+				w = Rsc.Load<Texture2D>(spr.Texture).Width;
+				h = Rsc.Load<Texture2D>(spr.Texture).Height;
 			}
 			for(int i = 0; i < tiles.Count; i++) {
 				if(tiles[i].HasComp<ComponentSolid>()) {
@@ -68,7 +69,7 @@ namespace IhnLib {
 							entsize = new Vector2(entities[i].GetComp<ComponentSize>().Width, entities[i].GetComp<ComponentSize>().Height);
 						}
 						else if(entities[i].HasComp<ComponentSprite>()) {
-							entsize = new Vector2(entities[i].GetComp<ComponentSprite>().Texture.Width, entities[i].GetComp<ComponentSprite>().Texture.Height);
+							entsize = new Vector2(Rsc.Load<Texture2D>(entities[i].GetComp<ComponentSprite>().Texture).Width, Rsc.Load<Texture2D>(entities[i].GetComp<ComponentSprite>().Texture).Height);
 						}
 						var entbounds = new Rectangle((int)entities[i].GetComp<ComponentPosition>().X, (int)entities[i].GetComp<ComponentPosition>().Y, (int)entsize.X, (int)entsize.Y);
 						if(entbounds.Intersects(bounds)) {

@@ -9,6 +9,7 @@ using System;
 using System.Drawing;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentString : Component{
 		public string Text;
 		public Font Font;

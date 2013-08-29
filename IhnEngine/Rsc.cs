@@ -17,7 +17,11 @@ namespace IhnLib {
 				rscs.Add(typeof(T), new Dictionary<string, object>());
 			}
 			if(!rscs[typeof(T)].ContainsKey(path)) {
-				rscs[typeof(T)].Add(path, Ihn.Instance.Content.Load<T>(path));
+				var dat = Ihn.Instance.Content.Load<T>(path);
+				if(dat.GetType() == typeof(Texture2D)) {
+					(dat as Texture2D).Name = path;
+				}
+				rscs[typeof(T)].Add(path, dat);
 			}
 			return (T)rscs[typeof(T)][path];
 		}

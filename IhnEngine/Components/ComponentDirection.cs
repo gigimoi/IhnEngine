@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentDirection : Component{
 		public Direction Dir;
 		public ComponentDirection(Direction dir) {

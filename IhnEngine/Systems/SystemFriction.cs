@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace IhnLib {
 	public class SystemFriction : ISystem{
-		public float Multiplier = 0.7f;
+		public float Multiplier = 0.65f;
 		public float VerticalMultiplier = 1f;
 		public float HorizantalMultiplier = 1f;
 		public void Update(Ihn ihn, Entity entity) {

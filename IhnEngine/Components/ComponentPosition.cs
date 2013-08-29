@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentPosition : Component{
 		public ComponentPosition(float x, float y) {
 			X = x;

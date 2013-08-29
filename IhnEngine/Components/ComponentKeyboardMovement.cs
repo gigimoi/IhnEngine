@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentKeyboardMovement : Component{
 		public float Speed;
 		public float VerticalModifier = 1f;

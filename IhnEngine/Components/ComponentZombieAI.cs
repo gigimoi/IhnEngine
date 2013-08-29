@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentZombieAI : Component{
 		public bool ShouldRefreshPath;
 		public List<Vector2>Path;

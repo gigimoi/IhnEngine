@@ -9,10 +9,11 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentTopDownEightDirSprite : Component{
-		public Texture2D Texture;
+		public string Texture;
 	
-		public ComponentTopDownEightDirSprite(Texture2D texture) {
+		public ComponentTopDownEightDirSprite(string texture) {
 			Texture = texture;
 		}
 	}

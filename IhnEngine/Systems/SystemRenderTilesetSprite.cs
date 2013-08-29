@@ -242,13 +242,13 @@ namespace IhnLib {
 				if(north && !northeast && east && southeast && south && !southwest && west && northwest) {
 					vector = new Vector2(sprite.TType.Size * 5, sprite.TType.Size * 6);
 				}
-				spriteBatch.Draw(sprite.Texture, 
+				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), 
 				                 new Rectangle((int)pos.X, (int)pos.Y, sprite.TType.Size, sprite.TType.Size), 
 				                 new Rectangle((int)vector.X, (int)vector.Y, sprite.TType.Size, sprite.TType.Size), 
 				                 Color.White);
 			}
 			else {
-				spriteBatch.Draw(sprite.Texture, new Vector2(pos.X, pos.Y), Color.White);
+				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Vector2(pos.X, pos.Y), Color.White);
 
 				if(entity.HasComp<ComponentSolid>() && DrawBorder) {
 					if(!north) {

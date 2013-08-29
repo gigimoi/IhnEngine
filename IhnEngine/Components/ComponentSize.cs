@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentSize : Component{
 		public int Width;
 		public int Height;

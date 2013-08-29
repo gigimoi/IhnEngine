@@ -40,11 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ihn.cs" />
-    <Compile Include="Component.cs" />
     <Compile Include="ISystem.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="SystemHelper.cs" />
     <Compile Include="Rsc.cs" />
     <Compile Include="Components\ComponentVelocity.cs" />
     <Compile Include="Components\ComponentHealth.cs" />
@@ -53,10 +49,8 @@
     <Compile Include="Systems\SystemRenderSprite.cs" />
     <Compile Include="Systems\SystemVelocityMovement.cs" />
     <Compile Include="Components\ComponentSize.cs" />
-    <Compile Include="KeyHelper.cs" />
     <Compile Include="Components\ComponentKeyboardMovement.cs" />
     <Compile Include="Systems\SystemKeyboardMovement.cs" />
-    <Compile Include="MouseHelper.cs" />
     <Compile Include="Components\ComponentRadius.cs" />
     <Compile Include="SystemRenderSprite.cs" />
     <Compile Include="Components\ComponentTilesetSprite.cs" />
@@ -79,16 +73,27 @@
     <Compile Include="Systems\SystemZombieAI.cs" />
     <Compile Include="Systems\SystemTilemap.cs" />
     <Compile Include="Components\ComponentTilemap.cs" />
-    <Compile Include="ComponentString.cs" />
     <Compile Include="Components\ComponentGravity.cs" />
     <Compile Include="Systems\SystemGravity.cs" />
     <Compile Include="Systems\SystemFriction.cs" />
     <Compile Include="CollisionHelper.cs" />
-    <Compile Include="SaveManager.cs" />
+    <Compile Include="Save\SaveManager.cs" />
+    <Compile Include="ECS\SystemHelper.cs" />
+    <Compile Include="ECS\Ihn.cs" />
+    <Compile Include="ECS\Component.cs" />
+    <Compile Include="ECS\Entity.cs" />
+    <Compile Include="Input\MouseHelper.cs" />
+    <Compile Include="Input\KeyHelper.cs" />
+    <Compile Include="Components\ComponentString.cs" />
+    <Compile Include="Sprite.cs" />
+    <Compile Include="FloatRect.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Components\" />
     <Folder Include="Systems\" />
+    <Folder Include="Save\" />
+    <Folder Include="ECS\" />
+    <Folder Include="Input\" />
   </ItemGroup>
 </Project>

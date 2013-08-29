@@ -17,7 +17,7 @@ namespace IhnEngine {
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 			var pos = entity.GetComp<ComponentPosition>();
 			var sprite = entity.GetComp<ComponentSprite>();
-			spriteBatch.Draw(sprite.Texture, new Vector2(pos.X, pos.Y), sprite.Source, Color.White);
+			spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Vector2(pos.X, pos.Y), sprite.Source.ToRect(), Color.White);
 		}
 		public List<Type> RequiredComponents {
 			get {

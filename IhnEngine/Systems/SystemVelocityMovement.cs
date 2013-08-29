@@ -23,6 +23,7 @@ namespace IhnLib {
 					if(CollisionHelper.Colliding(ihn, entity)) {
 						pos.Y -= velocity.Y;
 					}
+					pos.X = (int)pos.X;
 				}
 				else 
 				{
@@ -31,6 +32,7 @@ namespace IhnLib {
 					if(CollisionHelper.Colliding(ihn, entity)) {
 						pos.X -= velocity.X;
 					}
+					pos.Y = (int)pos.Y;
 				}
 			}
 		}

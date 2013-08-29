@@ -137,7 +137,7 @@ namespace IhnLib {
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 			var teditor = entity.GetComp<ComponentTilemap>();
 			if(Outline != null) {
-				spriteBatch.Draw(teditor.Tiles[teditor.Selected].Texture, 
+				spriteBatch.Draw(Rsc.Load<Texture2D>(teditor.Tiles[teditor.Selected].Texture), 
 				                 new Rectangle((int)TilePos.X, (int)TilePos.Y, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size), 
 				                 new Rectangle(0, 0, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size), 
 				                 Color.White);

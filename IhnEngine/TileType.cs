@@ -11,17 +11,18 @@ using System.Collections.Generic;
 
 namespace IhnLib {
 	public delegate Entity TileSpawner(Entity entity);
+	[Serializable]
 	public struct TileType {
 		int _size;
 		public int Size {
 			get {
 				if(_size == 0) {
-					_size = AutoTiled ? Texture.Width / 7 : Texture.Width;
+					_size = AutoTiled ? Rsc.Load<Texture2D>(Texture).Width / 7 : Rsc.Load<Texture2D>(Texture).Width;
 				}
 				return _size;
 			}
 		}
-		public Texture2D Texture;
+		public string Texture;
 		public bool AutoTiled;
 		public bool Solid;
 		public int Layer;

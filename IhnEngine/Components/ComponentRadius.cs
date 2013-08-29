@@ -8,6 +8,7 @@
 using System;
 
 namespace IhnLib {
+	[Serializable]
 	public class ComponentRadius : Component{
 		public int Radius;
 		public ComponentRadius(int radius) {
