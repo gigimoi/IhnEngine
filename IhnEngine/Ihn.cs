@@ -95,6 +95,15 @@ namespace IhnLib {
 			}
 			return new List<Entity>();
 		}
+		public Entity GetEntityAt(int i) {
+			return Entities[i];
+		}
+		public int EntityCount {
+			get {
+				return Entities.Count;
+			}
+		}
+
 		protected override void Initialize() {
 			base.Initialize();
 		}

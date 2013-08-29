@@ -7,9 +7,12 @@
 // Copyright (c) 2013 Gigimoi
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace IhnLib {
+	[DataContract]
 	public class Entity {
+		[DataMember]
 		public Dictionary<Type, Component> Components = new Dictionary<Type, Component>();
 		public void AddComp(Component component) {
 			Components.Add(component.GetType(), component);

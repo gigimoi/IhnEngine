@@ -16,6 +16,12 @@ namespace IhnLib {
 		}
 		public float X;
 		public float Y;
+		public override string Save() {
+			return "{" + X + "," + "Y" + "}";
+		}
+		public override void Load() {
+
+		}
 	}
 }
 
