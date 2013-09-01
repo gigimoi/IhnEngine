@@ -14,26 +14,38 @@ namespace IhnLib {
 		public void Update(Ihn ihn, Entity entity) {
 			var pos = entity.GetComp<ComponentPosition>();
 			var velocity = entity.GetComp<ComponentVelocity>();
-			pos.X += velocity.X;
-			pos.Y += velocity.Y;
-			if((velocity.X != 0 || velocity.Y != 0) && CollisionHelper.Colliding(ihn, entity)) {
+			if((velocity.X != 0 || velocity.Y != 0)) {
 				if(Math.Abs(velocity.X) > Math.Abs(velocity.Y)) {
-					pos.X -= velocity.X;
-					velocity.X = 0;
+					pos.X += velocity.X;
 					if(CollisionHelper.Colliding(ihn, entity)) {
-						pos.Y -= velocity.Y;
+						while(CollisionHelper.Colliding(ihn, entity)) {
+							pos.X -= velocity.X / 6f;
+						}
 					}
-					pos.X = (int)pos.X;
+					pos.Y += velocity.Y;
+					if(CollisionHelper.Colliding(ihn, entity)) {
+						while(CollisionHelper.Colliding(ihn, entity)) {
+							pos.Y -= velocity.Y / 6f;
+						}
+					}
 				}
 				else 
 				{
-					pos.Y -= velocity.Y;
-					velocity.Y = 0;
+					pos.Y += velocity.Y;
 					if(CollisionHelper.Colliding(ihn, entity)) {
-						pos.X -= velocity.X;
+						while(CollisionHelper.Colliding(ihn, entity)) {
+							pos.Y -= velocity.Y / 6f;
+						}
 					}
-					pos.Y = (int)pos.Y;
+					pos.X += velocity.X;
+					if(CollisionHelper.Colliding(ihn, entity)) {
+						while(CollisionHelper.Colliding(ihn, entity)) {
+							pos.X -= velocity.X / 6f;
+						}
+					}
 				}
+				pos.Y = (int)pos.Y;
+				pos.X = (int)pos.X;
 			}
 		}
 
