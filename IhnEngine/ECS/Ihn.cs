@@ -52,7 +52,7 @@ namespace IhnLib {
 			Entities = new List<Entity>();
 			_ecdict = new Dictionary<Type, List<Entity>>();
 		}
-		public void RegisterSystem(ISystem system) {
+		public void AddSystem(ISystem system) {
 			Systems.Add(system);
 		}
 		public void AddEntity(Entity entity) {
@@ -103,9 +103,17 @@ namespace IhnLib {
 		public Entity GetEntityAt(int i) {
 			return Entities[i];
 		}
+		public ISystem GetSystemAt(int i) {
+			return Systems[i];
+		}
 		public int EntityCount {
 			get {
 				return Entities.Count;
+			}
+		}
+		public int SystemCount {
+			get {
+				return Systems.Count;
 			}
 		}
 

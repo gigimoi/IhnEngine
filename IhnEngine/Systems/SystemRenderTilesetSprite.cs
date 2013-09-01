@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemRenderTilesetSprite : ISystem{
 		int recalcing = 0;
 		public bool DrawBorder = false;

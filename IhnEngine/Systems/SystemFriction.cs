@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemFriction : ISystem{
 		public float Multiplier = 0.65f;
 		public float VerticalMultiplier = 1f;

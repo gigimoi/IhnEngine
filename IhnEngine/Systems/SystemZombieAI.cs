@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemZombieAI : ISystem{
 		public Entity Following;
 		public SystemTilemap Map;

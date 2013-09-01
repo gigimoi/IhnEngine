@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemTilemap : ISystem{
 		public Texture2D Outline;
 		public Vector2 OutlinePos;

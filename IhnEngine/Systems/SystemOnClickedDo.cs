@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemOnClickedDo : ISystem{
 		public void Update(Ihn ihn, Entity entity) {
 			var pos = entity.GetComp<ComponentPosition>();

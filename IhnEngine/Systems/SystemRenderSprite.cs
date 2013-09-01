@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemRenderSprite : ISystem{
 		public void Update(Ihn ihn, Entity entity) { }
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {

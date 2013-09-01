@@ -1,17 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\MainMenuState.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\Player\SystemPlayer.cs">
     <Files>
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\MaceSwinger.cs" Line="1" Column="1" />
-      <File FileName="IhnEngine\ECS\Ihn.cs" Line="1" Column="1" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\MainMenuState.cs" Line="19" Column="47" />
-      <File FileName="IhnEngine\Input\MouseHelper.cs" Line="1" Column="1" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Player\SystemPlayer.cs" Line="40" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
+          <Node name="IhnLib" expanded="True">
+            <Node name="Systems" expanded="True" />
+          </Node>
           <Node name="MaceSwinger" expanded="True">
-            <Node name="MainMenuState.cs" selected="True" />
+            <Node name="Player" expanded="True">
+              <Node name="SystemPlayer.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

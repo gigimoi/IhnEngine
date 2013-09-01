@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemGravity : ISystem{
 		public void Update(Ihn ihn, Entity entity) {
 			if(entity.HasComp<ComponentSize>() || entity.HasComp<ComponentSprite>()) {

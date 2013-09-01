@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemVelocityMovement : ISystem{
 		public void Update(Ihn ihn, Entity entity) {
 			var pos = entity.GetComp<ComponentPosition>();

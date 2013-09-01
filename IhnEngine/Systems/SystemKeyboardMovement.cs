@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+	[Serializable]
 	public class SystemKeyboardMovement : ISystem{
 		public void Update(Ihn ihn, Entity entity) { 
 			var pos = entity.GetComp<ComponentPosition>();
