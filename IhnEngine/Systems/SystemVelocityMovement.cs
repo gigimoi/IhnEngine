@@ -16,36 +16,42 @@ namespace IhnLib {
 			var velocity = entity.GetComp<ComponentVelocity>();
 			if((velocity.X != 0 || velocity.Y != 0)) {
 				if(Math.Abs(velocity.X) > Math.Abs(velocity.Y)) {
-					pos.X += velocity.X;
-					if(CollisionHelper.Colliding(ihn, entity)) {
-						while(CollisionHelper.Colliding(ihn, entity)) {
-							pos.X -= velocity.X / 6f;
-						}
-					}
-					pos.Y += velocity.Y;
-					if(CollisionHelper.Colliding(ihn, entity)) {
-						while(CollisionHelper.Colliding(ihn, entity)) {
-							pos.Y -= velocity.Y / 6f;
-						}
-					}
+					MoveX(ihn, entity, pos, velocity);
+					MoveY(ihn, entity, pos, velocity);
 				}
 				else 
 				{
-					pos.Y += velocity.Y;
-					if(CollisionHelper.Colliding(ihn, entity)) {
-						while(CollisionHelper.Colliding(ihn, entity)) {
-							pos.Y -= velocity.Y / 6f;
-						}
-					}
-					pos.X += velocity.X;
-					if(CollisionHelper.Colliding(ihn, entity)) {
-						while(CollisionHelper.Colliding(ihn, entity)) {
-							pos.X -= velocity.X / 6f;
-						}
-					}
+					MoveY(ihn, entity, pos, velocity);
+					MoveX(ihn, entity, pos, velocity);
 				}
 				pos.Y = (int)pos.Y;
 				pos.X = (int)pos.X;
+			}
+		}
+
+		static void MoveX(Ihn ihn, Entity entity, ComponentPosition pos, ComponentVelocity velocity) {
+			pos.X += velocity.X;
+			if(CollisionHelper.Colliding(ihn, entity)) {
+				pos.X -= velocity.X;
+				int runs = 0;
+				while(!CollisionHelper.Colliding(ihn, entity) && runs < 10) {
+					pos.X += velocity.X / 10f;
+					runs++;
+				}
+				pos.X -= velocity.X / 10f;
+			}
+		}
+
+		static void MoveY(Ihn ihn, Entity entity, ComponentPosition pos, ComponentVelocity velocity) {
+			pos.Y += velocity.Y;
+			if(CollisionHelper.Colliding(ihn, entity)) {
+				pos.Y -= velocity.Y;
+				int runs = 0;
+				while(!CollisionHelper.Colliding(ihn, entity) && runs < 10) {
+					runs++;
+					pos.Y += velocity.Y / 10f;
+				}
+				pos.Y -= velocity.Y / 10f;
 			}
 		}
 
