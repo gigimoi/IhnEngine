@@ -20,10 +20,15 @@ namespace IhnLib {
 				velocity.Y += gravity.Multiplier * ComponentGravity.GlobalMultiplier;
 				var offset = velocity.Y;
 				pos.Y += offset;
+				bool shouldRound = false;
 				if(CollisionHelper.Colliding(ihn, entity)) {
 					velocity.Y -= gravity.Multiplier * ComponentGravity.GlobalMultiplier;
+					shouldRound = true;
 				}
 				pos.Y -= offset;
+				if(shouldRound) {
+					pos.Y = (int)Math.Round(pos.Y);
+				}
 			}
 		}
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {

@@ -11,7 +11,6 @@ namespace IhnLib {
 		SpriteBatch spriteBatch;
 		List<ISystem> Systems = new List<ISystem>();
 		List<Entity> Entities = new List<Entity>();
-		Dictionary<Component, List<Entity>> entityComponentLists = new Dictionary<Component, List<Entity>>();
 		public float Zoom = 1.0f;
 
 		public static Ihn Instance;
@@ -46,7 +45,13 @@ namespace IhnLib {
 				File.Copy(newPath, newPath.Replace(@"..\..\assets", "assets"));
 			}
 		}
-
+		public void ClearSystems() {
+			Systems = new List<ISystem>();
+		}
+		public void ClearEntities() {
+			Entities = new List<Entity>();
+			_ecdict = new Dictionary<Type, List<Entity>>();
+		}
 		public void RegisterSystem(ISystem system) {
 			Systems.Add(system);
 		}

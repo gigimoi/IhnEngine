@@ -87,6 +87,8 @@
     <Compile Include="Components\ComponentString.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="FloatRect.cs" />
+    <Compile Include="Components\ComponentOnClickedDo.cs" />
+    <Compile Include="Systems\SystemOnClickedDo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
