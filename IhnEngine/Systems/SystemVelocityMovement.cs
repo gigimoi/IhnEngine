@@ -25,8 +25,6 @@ namespace IhnLib {
 					MoveY(ihn, entity, pos, velocity);
 					MoveX(ihn, entity, pos, velocity);
 				}
-				pos.Y = (int)pos.Y;
-				pos.X = (int)pos.X;
 			}
 		}
 

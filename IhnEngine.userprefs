@@ -1,20 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\Player\SystemPlayer.cs">
-    <Files>
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Player\SystemPlayer.cs" Line="40" Column="4" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="IhnLib" expanded="True">
+            <Node name="Components" expanded="True" />
             <Node name="Systems" expanded="True" />
           </Node>
-          <Node name="MaceSwinger" expanded="True">
-            <Node name="Player" expanded="True">
-              <Node name="SystemPlayer.cs" selected="True" />
-            </Node>
-          </Node>
+          <Node name="MaceSwinger" expanded="True" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
