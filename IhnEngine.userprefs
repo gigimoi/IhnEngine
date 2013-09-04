@@ -1,23 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\Enemy\ComponentGoblin.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\Player\SystemPlayer.cs">
     <Files>
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Enemy\ComponentGoblin.cs" Line="13" Column="31" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\MaceSwinger.cs" Line="27" Column="3" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\DefaultLevelState.cs" Line="24" Column="40" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\DemoLevel1State.cs" Line="37" Column="122" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Enemy\FactorySimpleGoblin.cs" Line="23" Column="56" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Player\SystemPlayer.cs" Line="31" Column="37" />
+      <File FileName="IhnEngine\Components\ComponentSprite.cs" Line="16" Column="83" />
+      <File FileName="c:\Programming\Engines\IhnEngine\IhnEngine\Components\ComponentTilesetSprite.cs" Line="29" Column="136" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Player\ComponentPlayer.cs" Line="16" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="IhnLib" expanded="True">
+            <Node name="Components" expanded="True" />
             <Node name="Systems" expanded="True" />
           </Node>
           <Node name="MaceSwinger" expanded="True">
-            <Node name="Enemy" expanded="True">
-              <Node name="ComponentGoblin.cs" selected="True" />
-            </Node>
+            <Node name="Player" expanded="True" />
+            <Node name="Weapon" selected="True" />
           </Node>
         </State>
       </Pad>

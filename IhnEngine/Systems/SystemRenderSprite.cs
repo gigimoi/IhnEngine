@@ -20,10 +20,10 @@ namespace IhnLib {
 			if(entity.HasComp<ComponentSize>()) {
 				var size = entity.GetComp<ComponentSize>();
 
-				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Rectangle((int)pos.X, (int)pos.Y, size.Width, size.Height), sprite.Source.ToRect(), Color.White, 0, sprite.Origin, SpriteEffects.None, 0);
+				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Rectangle((int)pos.X, (int)pos.Y, size.Width, size.Height), sprite.Source.ToRect(), Color.White, sprite.Rotation, sprite.Origin, SpriteEffects.None, 0);
 			}
 			else {
-				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Rectangle((int)pos.X, (int)pos.Y, (int)sprite.Source.Width, (int)sprite.Source.Height), sprite.Source.ToRect(), Color.White, 0, sprite.Origin, SpriteEffects.None, 0);
+				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Rectangle((int)pos.X, (int)pos.Y, (int)sprite.Source.Width, (int)sprite.Source.Height), sprite.Source.ToRect(), Color.White, sprite.Rotation, sprite.Origin, SpriteEffects.None, 0);
 			}
 		}
 		public List<Type> RequiredComponents {

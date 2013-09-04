@@ -26,7 +26,7 @@ namespace IhnLib {
 		public bool Recalced;
 		public bool ForceRecalc;
 
-		public ComponentTilesetSprite(TileType ttype) : base(ttype.Texture, new FloatRect(0, 0, ttype.Size, ttype.Size), new Vector2(0, 0)) {
+		public ComponentTilesetSprite(TileType ttype) : base(ttype.Texture, new FloatRect(0, 0, ttype.Size, ttype.Size), new Vector2(0, 0), 0) {
 			TType = ttype;
 			ForceRecalc = true;
 		}
