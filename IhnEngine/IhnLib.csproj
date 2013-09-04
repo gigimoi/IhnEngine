@@ -90,6 +90,8 @@
     <Compile Include="Systems\SystemOnClickedDo.cs" />
     <Compile Include="Save\SaveManager.cs" />
     <Compile Include="ECS\ISystem.cs" />
+    <Compile Include="Components\ComponentFollow.cs" />
+    <Compile Include="Systems\SystemFollow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
