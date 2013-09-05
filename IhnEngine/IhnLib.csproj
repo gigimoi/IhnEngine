@@ -92,6 +92,7 @@
     <Compile Include="ECS\ISystem.cs" />
     <Compile Include="Components\ComponentFollow.cs" />
     <Compile Include="Systems\SystemFollow.cs" />
+    <Compile Include="Components\ComponentTransient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

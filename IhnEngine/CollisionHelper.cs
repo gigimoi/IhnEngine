@@ -15,7 +15,6 @@ namespace IhnLib {
 			if(!entity.HasComp<ComponentSolid>()) {
 				return false;
 			}
-			var tiles = ihn.GetEntitiesWith<ComponentTilesetSprite>();
 			var pos = entity.GetComp<ComponentPosition>();
 			var x = pos.X;
 			var y = pos.Y;
@@ -46,6 +45,8 @@ namespace IhnLib {
 				w = Rsc.Load<Texture2D>(spr.Texture).Width;
 				h = Rsc.Load<Texture2D>(spr.Texture).Height;
 			}
+
+			var tiles = ihn.GetEntitiesWith<ComponentTilesetSprite>();
 			for(int i = 0; i < tiles.Count; i++) {
 				if(tiles[i].HasComp<ComponentSolid>()) {
 					var tilePos = tiles[i].GetComp<ComponentPosition>();
@@ -55,12 +56,13 @@ namespace IhnLib {
 					}
 				}
 			}
-			if(entity.HasComp<ComponentVelocity>() && entity.HasComp<ComponentVelocity>()) {
+
+			if(entity.HasComp<ComponentVelocity>() && !entity.HasComp<ComponentTransient>()) {
 				var velocity = entity.GetComp<ComponentVelocity>();
 				var bounds = new Rectangle((int)x, (int)y, (int)w, (int)h);
 				var entities = ihn.GetEntitiesWith<ComponentSolid, ComponentPosition>();
 				for(int i = 0; i < entities.Count; i++) {
-					if(entities[i] != entity) {
+					if(entities[i] != entity && !entities[i].HasComp<ComponentTransient>()) {
 						var entsize = new Vector2(1, 1);
 						if(!entities[i].HasComp<ComponentPosition>()) {
 							continue;
