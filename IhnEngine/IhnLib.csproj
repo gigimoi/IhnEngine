@@ -52,7 +52,6 @@
     <Compile Include="Components\ComponentKeyboardMovement.cs" />
     <Compile Include="Systems\SystemKeyboardMovement.cs" />
     <Compile Include="Components\ComponentRadius.cs" />
-    <Compile Include="SystemRenderSprite.cs" />
     <Compile Include="Components\ComponentTilesetSprite.cs" />
     <Compile Include="Systems\SystemRenderTilesetSprite.cs">
       <DependentUpon>SystemDefault.cs</DependentUpon>
