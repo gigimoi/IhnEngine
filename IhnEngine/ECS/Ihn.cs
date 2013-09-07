@@ -129,7 +129,7 @@ namespace IhnLib {
 		{
 			KeyHelper.Update();
 			MouseHelper.Update();
-			EventManager.Raise("Ihn Update Start");
+			EventManager.Raise("Pre Ihn Update");
 			for(int i = 0; i < Systems.Count; i++) {
 				for(int j = 0; j < Entities.Count; j++) {
 					if(SystemHelper.CanSystemRunOnEntity(Systems[i], Entities[j])) {
@@ -137,7 +137,7 @@ namespace IhnLib {
 					}
 				}
 			}
-			EventManager.Raise("Ihn Update End");
+			EventManager.Raise("Post Ihn Update");
 			base.Update(gameTime);
 		}
 		protected override void Draw(GameTime gameTime)

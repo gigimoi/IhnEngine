@@ -1,27 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\Mods\ExampleMod3LowGravity\Init.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\Mods\ExampleMod4ExtendingMod\Init.cs">
     <Files>
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Mods\Load Order.txt" Line="2" Column="1" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Mods\ExampleMod3LowGravity\README.txt" Line="1" Column="1" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Mods\ExampleMod3LowGravity\Init.cs" Line="21" Column="2" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Player\SystemPlayer.cs" Line="1" Column="1" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\MaceSwinger.cs" Line="139" Column="39" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Mods\ExampleMod4ExtendingMod\Init.cs" Line="11" Column="30" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\Mods\ExampleMod5ExtendedMod\Init.cs" Line="13" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="IhnLib" expanded="True">
-            <Node name="Components" expanded="True" />
-            <Node name="Systems" expanded="True" />
+            <Node name="ECS" expanded="True" />
           </Node>
           <Node name="MaceSwinger" expanded="True">
-            <Node name="Enemy" expanded="True" />
             <Node name="Mods" expanded="True">
-              <Node name="ExampleMod3LowGravity" expanded="True">
+              <Node name="ExampleMod3LowGravity" expanded="True" />
+              <Node name="ExampleMod4ExtendingMod" expanded="True">
                 <Node name="Init.cs" selected="True" />
               </Node>
+              <Node name="ExampleMod5ExtendedMod" expanded="True" />
             </Node>
-            <Node name="Player" expanded="True" />
           </Node>
         </State>
       </Pad>
