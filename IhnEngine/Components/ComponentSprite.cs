@@ -22,6 +22,8 @@ namespace IhnLib {
 			Origin = origin;
 			Rotation = rotation;
 		}
+
+		public SpriteEffects Mirror = SpriteEffects.None;
 		public string Texture;
 		public FloatRect Source;
 		public Vector2 Origin;

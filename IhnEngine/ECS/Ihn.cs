@@ -58,7 +58,7 @@ namespace IhnLib {
 		public void AddEntity(Entity entity) {
 			Entities.Add(entity);
 		}
-		public void DestroyEntity(Entity entity) {
+		public void RemoveEntity(Entity entity) {
 			Entities.Remove(entity);
 			var comps = new Component[entity.Components.Count];
 			entity.Components.Values.CopyTo(comps, 0);
@@ -66,16 +66,25 @@ namespace IhnLib {
 				UnRegisterEntityHasComponent(comps[i].GetType(), entity);
 			}
 		}
-		public void RegisterEntityHasComponent(Type T, Entity entity) {
-			if(!_ecdict.ContainsKey(T)) {
-				_ecdict.Add(T, new List<Entity> { entity });
-			}
-			else {
-				_ecdict[T].Add(entity);
+		public void RemoveSystem(Type sysType) {
+			for(int i = 0; i < Systems.Count; i++) {
+				if(Systems[i].GetType() == sysType) {
+					Systems.RemoveAt(i);
+					break;
+				}
 			}
 		}
-		public void UnRegisterEntityHasComponent(Type T, Entity entity) {
-			_ecdict[T].Remove(entity);
+
+		public void RegisterEntityHasComponent(Type t, Entity entity) {
+			if(!_ecdict.ContainsKey(t)) {
+				_ecdict.Add(t, new List<Entity> { entity });
+			}
+			else {
+				_ecdict[t].Add(entity);
+			}
+		}
+		public void UnRegisterEntityHasComponent(Type t, Entity entity) {
+			_ecdict[t].Remove(entity);
 		}
 		Dictionary<Type, List<Entity>> _ecdict = new Dictionary<Type, List<Entity>>();
 		public List<Entity> GetEntitiesWith<T>() where T : Component {

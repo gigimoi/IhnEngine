@@ -93,6 +93,7 @@
     <Compile Include="Systems\SystemFollow.cs" />
     <Compile Include="Components\ComponentTransient.cs" />
     <Compile Include="Ini.cs" />
+    <Compile Include="Systems\SystemDeath.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

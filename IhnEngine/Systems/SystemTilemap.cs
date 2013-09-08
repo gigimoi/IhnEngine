@@ -111,7 +111,7 @@ namespace IhnLib {
 				var tileSprite = tiles[i].GetComp<ComponentTilesetSprite>();
 				var tilePos = tiles[i].GetComp<ComponentPosition>();
 				if(tilePos.X == x && tilePos.Y == y && tileSprite.TType.Layer == tileType.Layer) {
-					ihn.DestroyEntity(tiles[i]);
+					ihn.RemoveEntity(tiles[i]);
 				}
 			}
 			Entity newTile = new Entity();
