@@ -33,11 +33,11 @@ namespace IhnLib {
 			if(CollisionHelper.Colliding(ihn, entity)) {
 				pos.X -= velocity.X;
 				int runs = 0;
-				while(!CollisionHelper.Colliding(ihn, entity) && runs < 10) {
-					pos.X += velocity.X / 10f;
+				while(!CollisionHelper.Colliding(ihn, entity) && runs < Math.Abs(velocity.X) + 2) {
+					pos.X += velocity.X > 0 ? 1 : -1;
 					runs++;
 				}
-				pos.X -= velocity.X / 10f;
+				pos.X -= velocity.X > 0 ? 1 : -1;
 			}
 		}
 
@@ -46,11 +46,11 @@ namespace IhnLib {
 			if(CollisionHelper.Colliding(ihn, entity)) {
 				pos.Y -= velocity.Y;
 				int runs = 0;
-				while(!CollisionHelper.Colliding(ihn, entity) && runs < 10) {
+				while(!CollisionHelper.Colliding(ihn, entity) && runs < Math.Abs(velocity.Y) + 2) {
 					runs++;
-					pos.Y += velocity.Y / 10f;
+					pos.Y += velocity.Y > 0 ? 1 : -1;
 				}
-				pos.Y -= velocity.Y / 10f;
+				pos.Y -= velocity.Y > 0 ? 1 : -1;
 			}
 		}
 

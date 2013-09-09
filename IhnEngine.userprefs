@@ -1,22 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IhnEngine\Rsc.cs">
-    <Files>
-      <File FileName="IhnEngine\Rsc.cs" Line="23" Column="6" />
-      <File FileName="..\..\..\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" Line="983" Column="5" />
-      <File FileName="IhnEngine\Components\ComponentTilesetSprite.cs" Line="9" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="IhnLib" expanded="True">
-            <Node name="Components" expanded="True" />
-            <Node name="Rsc.cs" selected="True" />
-          </Node>
-          <Node name="MaceSwinger" expanded="True">
-            <Node name="src" expanded="True" />
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
