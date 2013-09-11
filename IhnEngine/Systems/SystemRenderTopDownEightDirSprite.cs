@@ -28,7 +28,7 @@ namespace IhnLib {
 			}
 			float Rotation = DirectionHelper.ToAngle(dir.Dir);
 			spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), 
-			                 new Rectangle((int)pos.X, (int)pos.Y, sizex, sizey),
+			                 new Rectangle((int)pos.X - (int)ihn.CameraPos.X, (int)pos.Y - (int)ihn.CameraPos.Y, sizex, sizey),
 			                 new Rectangle(DirectionHelper.IsDiagonal(dir.Dir) ? Rsc.Load<Texture2D>(sprite.Texture).Width / 2 : 0, 0, Rsc.Load<Texture2D>(sprite.Texture).Width / 2, Rsc.Load<Texture2D>(sprite.Texture).Height), 
 			                 Color.White, 
 			                 MathHelper.ToRadians(Rotation - (DirectionHelper.IsDiagonal(dir.Dir) ? 45 : 0)),

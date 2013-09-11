@@ -244,32 +244,32 @@ namespace IhnLib {
 					vector = new Vector2(sprite.TType.Size * 5, sprite.TType.Size * 6);
 				}
 				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), 
-				                 new Rectangle((int)pos.X, (int)pos.Y, sprite.TType.Size, sprite.TType.Size), 
+				                 new Rectangle((int)pos.X - (int)ihn.CameraPos.X, (int)pos.Y - (int)ihn.CameraPos.Y, sprite.TType.Size, sprite.TType.Size), 
 				                 new Rectangle((int)vector.X, (int)vector.Y, sprite.TType.Size, sprite.TType.Size), 
 				                 Color.White);
 			}
 			else {
-				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Vector2(pos.X, pos.Y), Color.White);
+				spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Texture), new Vector2(pos.X, pos.Y) - ihn.CameraPos, Color.White);
 
 				if(entity.HasComp<ComponentSolid>() && DrawBorder) {
 					if(!north) {
 						for(int i = 0; i < sprite.TType.Size; i++) {
-							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X + i, pos.Y), Color.Black);
+							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X + i, pos.Y) - ihn.CameraPos, Color.Black);
 						}
 					}
 					if(!south) {
 						for(int i = 0; i < sprite.TType.Size; i++) {
-							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X + i, pos.Y + sprite.TType.Size - 1), Color.Black);
+							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X + i, pos.Y + sprite.TType.Size - 1) - ihn.CameraPos, Color.Black);
 						}
 					}
 					if(!east) {
 						for(int i = 0; i < sprite.TType.Size; i++) {
-							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X + sprite.TType.Size - 1, pos.Y + i), Color.Black);
+							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X + sprite.TType.Size - 1, pos.Y + i) - ihn.CameraPos, Color.Black);
 						}
 					}
 					if(!west) {
 						for(int i = 0; i < sprite.TType.Size; i++) {
-							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X, pos.Y + i), Color.Black);
+							spriteBatch.Draw(Art.GetPixel(), new Vector2(pos.X, pos.Y + i) - ihn.CameraPos, Color.Black);
 						}
 					}
 				}

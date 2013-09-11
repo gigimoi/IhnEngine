@@ -20,6 +20,7 @@ namespace IhnLib {
 		public Vector2 LastPos = new Vector2(-1, -1);
 		public bool Dragging;
 		public bool[,] SolidityMap = new bool[5, 5];
+		public List<Rectangle> OnScreenBlackZone = new List<Rectangle>();
 
 		public List<Type> ComponentsPathingWhitelist = new List<Type> {
 		};
@@ -64,44 +65,53 @@ namespace IhnLib {
 		public void Update(Ihn ihn, Entity entity) {
 			var teditor = entity.GetComp<ComponentTilemap>();
 			int size = teditor.Tiles[teditor.Selected].Size;
-			int mx = MouseHelper.X / size * size;
-			int my = MouseHelper.Y / size * size;
-			if(MouseHelper.MouseLeftDown() && !Dragging && KeyHelper.KeyDown(Keys.LeftShift)) {
-				LastPos = new Vector2(mx, my);
-				Dragging = true;
-			}
-			if(KeyHelper.KeyReleased(Keys.LeftShift)) {
-				Dragging = false;
-			}
-			if(Dragging && MouseHelper.MouseLeftReleased() && KeyHelper.KeyDown(Keys.LeftShift)) {
-				if(LastPos.X > mx) {
-					int i = (int)LastPos.X;
-					LastPos.X = mx;
-					mx = i;
+			int mx = (int)(ihn.CameraPos.X + MouseHelper.X) / size * size;
+			int my = (int)(ihn.CameraPos.Y + MouseHelper.Y) / size * size;
+			var shouldUpdate = true;
+			for(int i = 0; i < OnScreenBlackZone.Count; i++) {
+				if(OnScreenBlackZone[i].Intersects(new Rectangle(MouseHelper.X, MouseHelper.Y, 1, 1))) {
+					shouldUpdate = false;
+					break;
 				}
-				if(LastPos.Y > my) {
-					int i = (int)LastPos.Y;
-					LastPos.Y = my;
-					my = i;
+			}
+			if(shouldUpdate) {
+				if(MouseHelper.MouseLeftDown() && !Dragging && KeyHelper.KeyDown(Keys.LeftShift)) {
+					LastPos = new Vector2(mx, my);
+					Dragging = true;
 				}
-				for(int i = (int)LastPos.X; i <= mx; i += size) {
-					for(int j = (int)LastPos.Y; j <= my; j += size) {
-						PlaceTile(ihn, teditor.Tiles[teditor.Selected], i, j);
+				if(KeyHelper.KeyReleased(Keys.LeftShift)) {
+					Dragging = false;
+				}
+				if(Dragging && MouseHelper.MouseLeftReleased() && KeyHelper.KeyDown(Keys.LeftShift)) {
+					if(LastPos.X > mx) {
+						int i = (int)LastPos.X;
+						LastPos.X = mx;
+						mx = i;
 					}
+					if(LastPos.Y > my) {
+						int i = (int)LastPos.Y;
+						LastPos.Y = my;
+						my = i;
+					}
+					for(int i = (int)LastPos.X; i <= mx; i += size) {
+						for(int j = (int)LastPos.Y; j <= my; j += size) {
+							PlaceTile(ihn, teditor.Tiles[teditor.Selected], i, j);
+						}
+					}
+					mx = MouseHelper.X / size * size;
+					my = MouseHelper.Y / size * size;
+					LastPos = new Vector2(-1, -1);
+					Dragging = false;
 				}
-				mx = MouseHelper.X / size * size;
-				my = MouseHelper.Y / size * size;
-				LastPos = new Vector2(-1, -1);
-				Dragging = false;
-			}
-			if(MouseHelper.MouseLeftDown() && !Dragging) {
-				PlaceTile(ihn, teditor.Tiles[teditor.Selected], mx, my);
-			}
-			if(MouseHelper.WheelDelta > 0) {
-				teditor.Selected = Math.Min(teditor.Tiles.Count - 1, teditor.Selected + 1);
-			}
-			if(MouseHelper.WheelDelta < 0) {
-				teditor.Selected = Math.Max(0, teditor.Selected - 1);
+				if(MouseHelper.MouseLeftDown() && !Dragging) {
+					PlaceTile(ihn, teditor.Tiles[teditor.Selected], mx, my);
+				}
+				if(MouseHelper.WheelDelta > 0) {
+					teditor.Selected = Math.Min(teditor.Tiles.Count - 1, teditor.Selected + 1);
+				}
+				if(MouseHelper.WheelDelta < 0) {
+					teditor.Selected = Math.Max(0, teditor.Selected - 1);
+				}
 			}
 		}
 
@@ -159,12 +169,12 @@ namespace IhnLib {
 					my = (int)LastPos.Y;
 				}
 				for(int i = lpx; i <= mx + size; i++) {
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(i, my + size), Color.White);
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(i, lpy), Color.White);
+					spriteBatch.Draw(Art.GetPixel(), new Vector2(i, my + size) - ihn.CameraPos, Color.White);
+					spriteBatch.Draw(Art.GetPixel(), new Vector2(i, lpy) - ihn.CameraPos, Color.White);
 				}
 				for(int i = lpy; i <= my + size; i++) {
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(mx + size, i), Color.White);
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(lpx, i), Color.White);
+					spriteBatch.Draw(Art.GetPixel(), new Vector2(mx + size, i) - ihn.CameraPos, Color.White);
+					spriteBatch.Draw(Art.GetPixel(), new Vector2(lpx, i) - ihn.CameraPos, Color.White);
 				}
 			}
 		}

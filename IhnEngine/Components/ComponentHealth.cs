@@ -12,9 +12,9 @@ namespace IhnLib {
 	public class ComponentHealth : Component{
 		public ComponentHealth(int maxHealth) {
 			MaxHealth = maxHealth;
-			Health = maxHealth;
+			Hp = maxHealth;
 		}
-		public int Health;
+		public int Hp;
 		public int MaxHealth;
 	}
 }

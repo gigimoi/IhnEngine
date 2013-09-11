@@ -15,7 +15,7 @@ namespace IhnLib {
 		public void Update(Ihn ihn, Entity entity) {
 			var health = entity.GetComp<ComponentHealth>();
 
-			if(health.Health <= 0) {
+			if(health.Hp <= 0) {
 				ihn.RemoveEntity(entity);
 			}
 		}

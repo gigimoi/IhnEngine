@@ -11,6 +11,7 @@ namespace IhnLib {
 		SpriteBatch spriteBatch;
 		List<ISystem> Systems = new List<ISystem>();
 		List<Entity> Entities = new List<Entity>();
+		public Vector2 CameraPos;
 		public float Zoom = 1.0f;
 
 		public static Ihn Instance;
