@@ -19,6 +19,7 @@ namespace IhnLib {
 		public Vector2 TilePos;
 		public Vector2 LastPos = new Vector2(-1, -1);
 		public bool Dragging;
+		public bool mouseDownCleared = false;
 		public bool[,] SolidityMap = new bool[5, 5];
 		public List<Rectangle> OnScreenBlackZone = new List<Rectangle>();
 
@@ -75,43 +76,51 @@ namespace IhnLib {
 				}
 			}
 			if(shouldUpdate) {
-				if(MouseHelper.MouseLeftDown() && !Dragging && KeyHelper.KeyDown(Keys.LeftShift)) {
-					LastPos = new Vector2(mx, my);
-					Dragging = true;
+				if(MouseHelper.MouseLeftPressed()) {
+					mouseDownCleared = true;
 				}
-				if(KeyHelper.KeyReleased(Keys.LeftShift)) {
-					Dragging = false;
-				}
-				if(Dragging && MouseHelper.MouseLeftReleased() && KeyHelper.KeyDown(Keys.LeftShift)) {
-					if(LastPos.X > mx) {
-						int i = (int)LastPos.X;
-						LastPos.X = mx;
-						mx = i;
+				if(mouseDownCleared) {
+					if(MouseHelper.MouseLeftDown() && !Dragging && KeyHelper.KeyDown(Keys.LeftShift)) {
+						LastPos = new Vector2(mx, my);
+						Dragging = true;
 					}
-					if(LastPos.Y > my) {
-						int i = (int)LastPos.Y;
-						LastPos.Y = my;
-						my = i;
+					if(KeyHelper.KeyReleased(Keys.LeftShift)) {
+						Dragging = false;
 					}
-					for(int i = (int)LastPos.X; i <= mx; i += size) {
-						for(int j = (int)LastPos.Y; j <= my; j += size) {
-							PlaceTile(ihn, teditor.Tiles[teditor.Selected], i, j);
+					if(Dragging && MouseHelper.MouseLeftReleased() && KeyHelper.KeyDown(Keys.LeftShift)) {
+						if(LastPos.X > mx) {
+							int i = (int)LastPos.X;
+							LastPos.X = mx;
+							mx = i;
 						}
+						if(LastPos.Y > my) {
+							int i = (int)LastPos.Y;
+							LastPos.Y = my;
+							my = i;
+						}
+						for(int i = (int)LastPos.X; i <= mx; i += size) {
+							for(int j = (int)LastPos.Y; j <= my; j += size) {
+								PlaceTile(ihn, teditor.Tiles[teditor.Selected], i, j);
+							}
+						}
+						mx = MouseHelper.X / size * size;
+						my = MouseHelper.Y / size * size;
+						LastPos = new Vector2(-1, -1);
+						Dragging = false;
 					}
-					mx = MouseHelper.X / size * size;
-					my = MouseHelper.Y / size * size;
-					LastPos = new Vector2(-1, -1);
-					Dragging = false;
+					if(MouseHelper.MouseLeftDown() && !Dragging) {
+						PlaceTile(ihn, teditor.Tiles[teditor.Selected], mx, my);
+					}
+					if(MouseHelper.WheelDelta > 0) {
+						teditor.Selected = Math.Min(teditor.Tiles.Count - 1, teditor.Selected + 1);
+					}
+					if(MouseHelper.WheelDelta < 0) {
+						teditor.Selected = Math.Max(0, teditor.Selected - 1);
+					}
 				}
-				if(MouseHelper.MouseLeftDown() && !Dragging) {
-					PlaceTile(ihn, teditor.Tiles[teditor.Selected], mx, my);
-				}
-				if(MouseHelper.WheelDelta > 0) {
-					teditor.Selected = Math.Min(teditor.Tiles.Count - 1, teditor.Selected + 1);
-				}
-				if(MouseHelper.WheelDelta < 0) {
-					teditor.Selected = Math.Max(0, teditor.Selected - 1);
-				}
+			}
+			else {
+				mouseDownCleared = false;
 			}
 		}
 

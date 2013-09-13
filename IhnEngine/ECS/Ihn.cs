@@ -153,7 +153,7 @@ namespace IhnLib {
 		protected override void Draw(GameTime gameTime)
 		{
 			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, 
+			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, 
 			                  DepthStencilState.Default, RasterizerState.CullNone, null, 
 			                  Matrix.CreateScale(Zoom));
 			EventManager.Raise("Ihn Draw Start");

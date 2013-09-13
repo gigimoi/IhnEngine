@@ -21,11 +21,11 @@ namespace IhnLib {
 			return _pixel;
 		}
 		public static Texture2D GetNone() {
-			if(_pixel == null) {
-				_pixel = new Texture2D(Ihn.Instance.GraphicsDevice, 1, 1);
-				_pixel.SetData<Color>(new Color[] { new Color(0, 0, 0, 0) });
+			if(_none == null) {
+				_none = new Texture2D(Ihn.Instance.GraphicsDevice, 1, 1);
+				_none.SetData<Color>(new Color[] { new Color(0, 0, 0, 0) });
 			}
-			return _pixel;
+			return _none;
 		}
 	}
 }

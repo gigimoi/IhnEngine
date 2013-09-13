@@ -53,9 +53,6 @@
     <Compile Include="Systems\SystemKeyboardMovement.cs" />
     <Compile Include="Components\ComponentRadius.cs" />
     <Compile Include="Components\ComponentTilesetSprite.cs" />
-    <Compile Include="Systems\SystemRenderTilesetSprite.cs">
-      <DependentUpon>SystemDefault.cs</DependentUpon>
-    </Compile>
     <Compile Include="Systems\SystemDefault.cs" />
     <Compile Include="Components\ComponentDirection.cs" />
     <Compile Include="Direction.cs" />
@@ -94,6 +91,7 @@
     <Compile Include="Components\ComponentTransient.cs" />
     <Compile Include="Ini.cs" />
     <Compile Include="Systems\SystemDeath.cs" />
+    <Compile Include="Systems\SystemRenderTilesetSprite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
