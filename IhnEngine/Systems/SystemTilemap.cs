@@ -156,34 +156,36 @@ namespace IhnLib {
 
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 			var teditor = entity.GetComp<ComponentTilemap>();
-			if(Outline != null) {
-				spriteBatch.Draw(Rsc.Load<Texture2D>(teditor.Tiles[teditor.Selected].Texture), 
-				                 new Rectangle((int)TilePos.X, (int)TilePos.Y, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size), 
-				                 new Rectangle(0, 0, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size), 
-				                 Color.White);
-				spriteBatch.Draw(Outline, OutlinePos, Color.White);
-			}
-			if(Dragging) {
-				int size = teditor.Tiles[teditor.Selected].Size;
-				int mx = MouseHelper.X / size * size;
-				int my = MouseHelper.Y / size * size;
-				int lpx = (int)LastPos.X;
-				int lpy = (int)LastPos.Y;
-				if(LastPos.X > mx) {
-					lpx = mx;
-					mx = (int)LastPos.X;
+			if(teditor.Enabled) {
+				if(Outline != null) {
+					spriteBatch.Draw(Rsc.Load<Texture2D>(teditor.Tiles[teditor.Selected].Texture),
+									 new Rectangle((int)TilePos.X, (int)TilePos.Y, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size),
+									 new Rectangle(0, 0, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size),
+									 Color.White);
+					spriteBatch.Draw(Outline, OutlinePos, Color.White);
 				}
-				if(LastPos.Y > my) {
-					lpy = my;
-					my = (int)LastPos.Y;
-				}
-				for(int i = lpx; i <= mx + size; i++) {
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(i, my + size) - ihn.CameraPos, Color.White);
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(i, lpy) - ihn.CameraPos, Color.White);
-				}
-				for(int i = lpy; i <= my + size; i++) {
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(mx + size, i) - ihn.CameraPos, Color.White);
-					spriteBatch.Draw(Art.GetPixel(), new Vector2(lpx, i) - ihn.CameraPos, Color.White);
+				if(Dragging) {
+					int size = teditor.Tiles[teditor.Selected].Size;
+					int mx = MouseHelper.X / size * size;
+					int my = MouseHelper.Y / size * size;
+					int lpx = (int)LastPos.X;
+					int lpy = (int)LastPos.Y;
+					if(LastPos.X > mx) {
+						lpx = mx;
+						mx = (int)LastPos.X;
+					}
+					if(LastPos.Y > my) {
+						lpy = my;
+						my = (int)LastPos.Y;
+					}
+					for(int i = lpx; i <= mx + size; i++) {
+						spriteBatch.Draw(Art.GetPixel(), new Vector2(i, my + size) - ihn.CameraPos, Color.White);
+						spriteBatch.Draw(Art.GetPixel(), new Vector2(i, lpy) - ihn.CameraPos, Color.White);
+					}
+					for(int i = lpy; i <= my + size; i++) {
+						spriteBatch.Draw(Art.GetPixel(), new Vector2(mx + size, i) - ihn.CameraPos, Color.White);
+						spriteBatch.Draw(Art.GetPixel(), new Vector2(lpx, i) - ihn.CameraPos, Color.White);
+					}
 				}
 			}
 		}

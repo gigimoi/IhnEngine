@@ -1,12 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\src\Assets.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\src\Gui\SystemIngameGui.cs">
     <Files>
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Assets.cs" Line="148" Column="6" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Combat\Weapon\MaceParts.cs" Line="93" Column="3" />
-      <File FileName="c:\Programming\Games\IhnEngine\MaceSwinger\src\Combat\Weapon\FactoryMacePart.cs" Line="38" Column="39" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Combat\Weapon\FactoryWeapon.cs" Line="27" Column="14" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\DemoLevel1State.cs" Line="18" Column="26" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Assets.cs" Line="85" Column="52" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Gui\SystemIngameGui.cs" Line="72" Column="5" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Combat\ItemType.cs" Line="14" Column="52" />
+      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Player\ComponentPlayer.cs" Line="20" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,7 +19,10 @@
               <Node name="Combat" expanded="True">
                 <Node name="Weapon" expanded="True" />
               </Node>
-              <Node name="Assets.cs" selected="True" />
+              <Node name="Gui" expanded="True">
+                <Node name="SystemIngameGui.cs" selected="True" />
+              </Node>
+              <Node name="Player" expanded="True" />
             </Node>
           </Node>
         </State>

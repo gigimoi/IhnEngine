@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace IhnLib {
 	[Serializable]
 	public class ComponentTilemap : Component {
-		public bool Enabled = true;
+		public bool Enabled;
 		public List<TileType> Tiles = new List<TileType>();
 		public int Selected;
 	}
