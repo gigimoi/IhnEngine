@@ -8,6 +8,8 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
+using Microsoft.Xna.Framework;
 
 namespace IhnLib {
 	public static class Rsc {
@@ -18,7 +20,10 @@ namespace IhnLib {
 			}
 			if(path != "") {
 				if(!rscs[typeof(T)].ContainsKey(path)) {
-					var dat = Ihn.Instance.Content.Load<T>(path);
+					var newPath = Path.GetFullPath(path).Substring(3);
+					Ihn.Instance.Content.RootDirectory = Directory.GetCurrentDirectory().Substring(0, 3);
+					var dat = Ihn.Instance.Content.Load<T>(newPath);
+
 					if(dat.GetType() == typeof(Texture2D)) {
 						(dat as Texture2D).Name = path;
 					}
@@ -33,6 +38,21 @@ namespace IhnLib {
 				return (T)rscs[typeof(T)]["NULL_DATA"];
 			}
 			return default(T);
+		}
+		public static Texture2D CombineTextures(Texture2D spriteOne, Texture2D spriteTwo) {
+			Color[] CombinedColorData = new Color[spriteOne.Width * spriteOne.Height];
+			Color[] TempColorData = new Color[spriteTwo.Width * spriteTwo.Height];
+			spriteOne.GetData(CombinedColorData);
+			spriteTwo.GetData(TempColorData);
+			for(int i = 0; i < CombinedColorData.Length; i++) {
+				if(TempColorData[i].A != 0)
+					CombinedColorData[i] = TempColorData[i];
+			}
+
+			Texture2D returnTexture = new Texture2D(Ihn.Instance.GraphicsDevice, Math.Max(spriteOne.Width, spriteTwo.Width), Math.Max(spriteOne.Height, spriteTwo.Height));
+			returnTexture.SetData(CombinedColorData);
+
+			return returnTexture;
 		}
 	}
 }

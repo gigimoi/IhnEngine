@@ -16,35 +16,11 @@ namespace IhnLib {
 				return false;
 			}
 			var pos = entity.GetComp<ComponentPosition>();
-			var x = pos.X;
-			var y = pos.Y;
-			var w = 0;
-			var h = 0;
-			if(entity.HasComp<ComponentAABB>()) {
-				var aabb = entity.GetComp<ComponentAABB>();
-				x = aabb.X;
-				y = aabb.Y;
-				w = aabb.Width;
-				h = aabb.Height;
-			}
-			else if(entity.HasComp<ComponentTopDownEightDirSprite>()) {
-				var spr = entity.GetComp<ComponentTopDownEightDirSprite>();
-				x -= Rsc.Load<Texture2D>(spr.Texture).Width / 8;
-				y -= Rsc.Load<Texture2D>(spr.Texture).Height / 4;
-				w = Rsc.Load<Texture2D>(spr.Texture).Width / 4;
-				h = Rsc.Load<Texture2D>(spr.Texture).Height / 2;
-			}
-			else if(entity.HasComp<ComponentSize>()) {
-				w = entity.GetComp<ComponentSize>().Width;
-				h = entity.GetComp<ComponentSize>().Height;
-			}
-			else if(entity.HasComp<ComponentSprite>()) {
-				var spr = entity.GetComp<ComponentSprite>();
-				x -= spr.Origin.X;
-				y -= spr.Origin.Y;
-				w = Rsc.Load<Texture2D>(spr.Texture).Width;
-				h = Rsc.Load<Texture2D>(spr.Texture).Height;
-			}
+			float x;
+			float y;
+			int w;
+			int h;
+			GetBounds(entity, pos, out x, out y, out w, out h);
 
 			var tiles = ihn.GetEntitiesWith<ComponentTilesetSprite>();
 			for(int i = 0; i < tiles.Count; i++) {
@@ -81,6 +57,38 @@ namespace IhnLib {
 				}
 			}
 			return false;
+		}
+
+		public static void GetBounds(Entity entity, ComponentPosition pos, out float x, out float y, out int w, out int h) {
+			x = pos.X;
+			y = pos.Y;
+			w = 0;
+			h = 0;
+			if(entity.HasComp<ComponentAABB>()) {
+				var aabb = entity.GetComp<ComponentAABB>();
+				x = aabb.X;
+				y = aabb.Y;
+				w = aabb.Width;
+				h = aabb.Height;
+			}
+			else if(entity.HasComp<ComponentTopDownEightDirSprite>()) {
+				var spr = entity.GetComp<ComponentTopDownEightDirSprite>();
+				x -= Rsc.Load<Texture2D>(spr.Texture).Width / 8;
+				y -= Rsc.Load<Texture2D>(spr.Texture).Height / 4;
+				w = Rsc.Load<Texture2D>(spr.Texture).Width / 4;
+				h = Rsc.Load<Texture2D>(spr.Texture).Height / 2;
+			}
+			else if(entity.HasComp<ComponentSize>()) {
+				w = entity.GetComp<ComponentSize>().Width;
+				h = entity.GetComp<ComponentSize>().Height;
+			}
+			else if(entity.HasComp<ComponentSprite>()) {
+				var spr = entity.GetComp<ComponentSprite>();
+				x -= spr.Origin.X;
+				y -= spr.Origin.Y;
+				w = Rsc.Load<Texture2D>(spr.Texture).Width;
+				h = Rsc.Load<Texture2D>(spr.Texture).Height;
+			}
 		}
 	}
 }

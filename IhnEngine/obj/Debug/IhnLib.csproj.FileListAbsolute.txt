@@ -1,6 +1,7 @@
 C:\Programming\Engines\IhnEngine\IhnEngine\obj\Debug\IhnLib.csprojResolveAssemblyReference.cache
-D:\Programming\Engines\IhnEngine\IhnEngine\obj\Debug\IhnLib.csprojResolveAssemblyReference.cache
 D:\Programming\Engines\IhnEngine\IhnEngine\bin\Debug\IhnEngine.dll
 D:\Programming\Engines\IhnEngine\IhnEngine\bin\Debug\IhnEngine.pdb
 D:\Programming\Engines\IhnEngine\IhnEngine\obj\Debug\IhnEngine.dll
 D:\Programming\Engines\IhnEngine\IhnEngine\obj\Debug\IhnEngine.pdb
+D:\Programming\Engines\IhnEngine\IhnEngine\bin\Debug\IhnEngine.dll.CodeAnalysisLog.xml
+D:\Programming\Engines\IhnEngine\IhnEngine\bin\Debug\IhnEngine.dll.lastcodeanalysissucceeded

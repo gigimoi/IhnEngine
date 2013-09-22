@@ -12,16 +12,16 @@ namespace IhnLib {
 	[Serializable]
 	public class ComponentFollow : Component{
 		public Entity ToFollow;
-		public Vector2 Offset;
+		public Position Offset;
 
-		public ComponentFollow(Entity toFollow, Vector2 offset) {
+		public ComponentFollow(Entity toFollow, Position offset) {
 			if(!toFollow.HasComp<ComponentPosition>()) {
 				Console.WriteLine("WARNING: Trying to follow component without position");
 			}
 			ToFollow = toFollow;
 			Offset = offset;
 		}
-		public ComponentFollow(Entity toFollow) : this(toFollow, new Vector2(0, 0)) { }
+		public ComponentFollow(Entity toFollow) : this(toFollow, new Position(0, 0)) { }
 	}
 }
 

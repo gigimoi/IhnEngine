@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -40,12 +40,15 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\ComponentMultiSprite.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rsc.cs" />
     <Compile Include="Components\ComponentVelocity.cs" />
     <Compile Include="Components\ComponentHealth.cs" />
     <Compile Include="Components\ComponentPosition.cs" />
     <Compile Include="Components\ComponentSprite.cs" />
+    <Compile Include="Systems\SystemRenderMultisprite.cs" />
     <Compile Include="Systems\SystemRenderSprite.cs" />
     <Compile Include="Systems\SystemVelocityMovement.cs" />
     <Compile Include="Components\ComponentSize.cs" />
@@ -80,7 +83,6 @@
     <Compile Include="Input\MouseHelper.cs" />
     <Compile Include="Input\KeyHelper.cs" />
     <Compile Include="Components\ComponentString.cs" />
-    <Compile Include="Sprite.cs" />
     <Compile Include="FloatRect.cs" />
     <Compile Include="Components\ComponentOnClickedDo.cs" />
     <Compile Include="Systems\SystemOnClickedDo.cs" />
@@ -94,11 +96,5 @@
     <Compile Include="Systems\SystemRenderTilesetSprite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Components\" />
-    <Folder Include="Systems\" />
-    <Folder Include="Save\" />
-    <Folder Include="ECS\" />
-    <Folder Include="Input\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

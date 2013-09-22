@@ -14,10 +14,10 @@ using Microsoft.Xna.Framework.Input;
 namespace IhnLib {
 	[Serializable]
 	public class SystemTilemap : ISystem{
-		public Texture2D Outline;
-		public Vector2 OutlinePos;
-		public Vector2 TilePos;
-		public Vector2 LastPos = new Vector2(-1, -1);
+		public string Outline;
+		public Position OutlinePos;
+		public Position TilePos;
+		public Position LastPos = new Position(-1, -1);
 		public bool Dragging;
 		public bool mouseDownCleared = false;
 		public bool[,] SolidityMap = new bool[5, 5];
@@ -81,7 +81,7 @@ namespace IhnLib {
 				}
 				if(mouseDownCleared) {
 					if(MouseHelper.MouseLeftDown() && !Dragging && KeyHelper.KeyDown(Keys.LeftShift)) {
-						LastPos = new Vector2(mx, my);
+						LastPos = new Position(mx, my);
 						Dragging = true;
 					}
 					if(KeyHelper.KeyReleased(Keys.LeftShift)) {
@@ -105,7 +105,7 @@ namespace IhnLib {
 						}
 						mx = MouseHelper.X / size * size;
 						my = MouseHelper.Y / size * size;
-						LastPos = new Vector2(-1, -1);
+						LastPos = new Position(-1, -1);
 						Dragging = false;
 					}
 					if(MouseHelper.MouseLeftDown() && !Dragging) {
@@ -162,7 +162,7 @@ namespace IhnLib {
 									 new Rectangle((int)TilePos.X, (int)TilePos.Y, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size),
 									 new Rectangle(0, 0, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size),
 									 Color.White);
-					spriteBatch.Draw(Outline, OutlinePos, Color.White);
+					spriteBatch.Draw(Rsc.Load<Texture2D>(Outline), OutlinePos.ToVector(), Color.White);
 				}
 				if(Dragging) {
 					int size = teditor.Tiles[teditor.Selected].Size;
