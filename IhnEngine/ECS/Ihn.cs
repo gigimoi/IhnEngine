@@ -16,15 +16,15 @@ namespace IhnLib {
 
 		public static Ihn Instance;
 
-		public Ihn(int width, int height, bool vsync) {
-			graphics = new GraphicsDeviceManager(this);
-			Content.RootDirectory = "assets";	            
-			graphics.IsFullScreen = false;
+		public Ihn(int width, int height, bool vsync, bool fullscreen = false) {
+			graphics = new GraphicsDeviceManager(this);            
 			graphics.SynchronizeWithVerticalRetrace = vsync;
 			graphics.PreferredBackBufferHeight = height;
 			graphics.PreferredBackBufferWidth = width;
 			graphics.PreferMultiSampling = true;
 			graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
+			graphics.PreferredBackBufferFormat = SurfaceFormat.RgbPvrtc4Bpp;
+			graphics.IsFullScreen = fullscreen;
 			Instance = this;
 		}
 
@@ -88,6 +88,7 @@ namespace IhnLib {
 			_ecdict[t].Remove(entity);
 		}
 		Dictionary<Type, List<Entity>> _ecdict = new Dictionary<Type, List<Entity>>();
+		public SpriteBatch SBatch;
 		public List<Entity> GetEntitiesWith<T>() where T : Component {
 			if(_ecdict.ContainsKey(typeof(T))) {
 				return _ecdict[typeof(T)];
@@ -153,10 +154,13 @@ namespace IhnLib {
 		protected override void Draw(GameTime gameTime)
 		{
 			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+			if(SBatch == null) {
+				SBatch = spriteBatch;
+			}
 			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, 
 			                  DepthStencilState.Default, RasterizerState.CullNone, null, 
 			                  Matrix.CreateScale(Zoom));
-			EventManager.Raise("Ihn Draw Start");
+			EventManager.Raise("Pre Ihn Render");
 			for(int i = 0; i < Systems.Count; i++) {
 				for(int j = 0; j < Entities.Count; j++) {
 					if(SystemHelper.CanSystemRunOnEntity(Systems[i], Entities[j])) {
@@ -164,7 +168,7 @@ namespace IhnLib {
 					}
 				}
 			}
-			EventManager.Raise("Ihn Draw End");
+			EventManager.Raise("Post Ihn Render");
 			spriteBatch.End();
 			base.Draw(gameTime);
 		}

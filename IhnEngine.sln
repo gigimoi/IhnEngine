@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaceSwingerPartEditor", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaceSwingerLauncher", "..\..\Games\IhnEngine\MaceSwinger\Launcher\MaceSwingerLauncher\MaceSwingerLauncher.csproj", "{9FD6CB99-77C7-4A8F-9048-E608A23BA6AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaceSwingerInstaller", "..\..\Games\IhnEngine\MaceSwinger\Installer\MaceSwingerInstaller\MaceSwingerInstaller.csproj", "{0B37AEF9-4D4F-43D3-9C4A-72EFA6031346}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,12 +41,13 @@ Global
 		{9FD6CB99-77C7-4A8F-9048-E608A23BA6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FD6CB99-77C7-4A8F-9048-E608A23BA6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FD6CB99-77C7-4A8F-9048-E608A23BA6AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B37AEF9-4D4F-43D3-9C4A-72EFA6031346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B37AEF9-4D4F-43D3-9C4A-72EFA6031346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B37AEF9-4D4F-43D3-9C4A-72EFA6031346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B37AEF9-4D4F-43D3-9C4A-72EFA6031346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = ..\..\Games\IhnEngine\MaceSwinger\MaceSwinger.csproj

@@ -15,8 +15,8 @@ namespace IhnLib {
 	[Serializable]
 	public class SystemTilemap : ISystem{
 		public string Outline;
-		public Position OutlinePos;
-		public Position TilePos;
+		public Position OutlinePos = new Position(0, 0);
+		public Position TilePos = new Position(0, 0);
 		public Position LastPos = new Position(-1, -1);
 		public bool Dragging;
 		public bool mouseDownCleared = false;
@@ -75,7 +75,7 @@ namespace IhnLib {
 					break;
 				}
 			}
-			if(shouldUpdate) {
+			if(shouldUpdate && teditor.Enabled) {
 				if(MouseHelper.MouseLeftPressed()) {
 					mouseDownCleared = true;
 				}

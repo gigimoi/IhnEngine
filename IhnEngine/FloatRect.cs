@@ -24,6 +24,9 @@ namespace IhnLib {
 		public Rectangle ToRect() {
 			return new Rectangle((int)X, (int)Y, (int)Width, (int)Height);
 		}
+		public override string ToString() {
+			return "{" + "X:" + X + ",Y:" + Y + ",W:" + Width + ",H:" + Height + "}";
+		}
 	}
 }
 

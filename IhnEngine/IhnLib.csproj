@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\ComponentMultiSprite.cs" />
+    <Compile Include="Extern\BmFont.cs" />
+    <Compile Include="Extern\FontRenderer.cs" />
+    <Compile Include="Font.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rsc.cs" />
