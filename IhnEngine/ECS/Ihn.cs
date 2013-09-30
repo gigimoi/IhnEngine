@@ -25,6 +25,7 @@ namespace IhnLib {
 			graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
 			graphics.PreferredBackBufferFormat = SurfaceFormat.RgbPvrtc4Bpp;
 			graphics.IsFullScreen = fullscreen;
+			Content.RootDirectory = Directory.GetCurrentDirectory().Substring(0, 3);
 			Instance = this;
 		}
 

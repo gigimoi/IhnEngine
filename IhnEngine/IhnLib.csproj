@@ -41,8 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\ComponentMultiSprite.cs" />
+    <Compile Include="Components\ComponentTilemap.cs" />
     <Compile Include="Extern\BmFont.cs" />
-    <Compile Include="Extern\FontRenderer.cs" />
+    <Compile Include="FontRenderer.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,12 +54,12 @@
     <Compile Include="Components\ComponentSprite.cs" />
     <Compile Include="Systems\SystemRenderMultisprite.cs" />
     <Compile Include="Systems\SystemRenderSprite.cs" />
+    <Compile Include="Systems\SystemTilemap.cs" />
     <Compile Include="Systems\SystemVelocityMovement.cs" />
     <Compile Include="Components\ComponentSize.cs" />
     <Compile Include="Components\ComponentKeyboardMovement.cs" />
     <Compile Include="Systems\SystemKeyboardMovement.cs" />
     <Compile Include="Components\ComponentRadius.cs" />
-    <Compile Include="Components\ComponentTilesetSprite.cs" />
     <Compile Include="Systems\SystemDefault.cs" />
     <Compile Include="Components\ComponentDirection.cs" />
     <Compile Include="Direction.cs" />
@@ -73,8 +74,6 @@
     <Compile Include="Pathfinding.cs" />
     <Compile Include="Components\ComponentZombieAI.cs" />
     <Compile Include="Systems\SystemZombieAI.cs" />
-    <Compile Include="Systems\SystemTilemap.cs" />
-    <Compile Include="Components\ComponentTilemap.cs" />
     <Compile Include="Components\ComponentGravity.cs" />
     <Compile Include="Systems\SystemGravity.cs" />
     <Compile Include="Systems\SystemFriction.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="Components\ComponentTransient.cs" />
     <Compile Include="Ini.cs" />
     <Compile Include="Systems\SystemDeath.cs" />
-    <Compile Include="Systems\SystemRenderTilesetSprite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />

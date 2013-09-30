@@ -1,10 +1,3 @@
-//
-// Pathfinding.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;

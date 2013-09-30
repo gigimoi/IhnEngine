@@ -22,13 +22,24 @@ namespace IhnLib {
 			int h;
 			GetBounds(entity, pos, out x, out y, out w, out h);
 
-			var tiles = ihn.GetEntitiesWith<ComponentTilesetSprite>();
-			for(int i = 0; i < tiles.Count; i++) {
-				if(tiles[i].HasComp<ComponentSolid>()) {
-					var tilePos = tiles[i].GetComp<ComponentPosition>();
-					var tileSprite = tiles[i].GetComp<ComponentTilesetSprite>();
-					if(new Rectangle((int)tilePos.X, (int)tilePos.Y, tileSprite.TType.Size, tileSprite.TType.Size).Intersects(new Rectangle((int)x, (int)y, w, h))) {
-						return true;
+			//TODO: Optimize tilemap collision
+			var tilemaps = ihn.GetEntitiesWith<ComponentTilemap>();
+			if(tilemaps.Count > 0) {
+				var tilemap = tilemaps[0].GetComp<ComponentTilemap>();
+				for(int i = (int)Math.Max(0, (x - 250) / 32);
+					i < (int)Math.Min(tilemap.Map.GetLength(0), (x + 250) / 32);
+					i++) {
+					for(int j = (int)Math.Max(0, (y - 250) / 32);
+						j < (int)Math.Min(tilemap.Map.GetLength(1), (y + 250) / 32);
+						j++) {
+						if(tilemap.Map[i, j].Solid) {
+							var tw = Rsc.Load<Texture2D>(tilemap.Map[i, j].RootTexture).Width;
+							var th = Rsc.Load<Texture2D>(tilemap.Map[i, j].RootTexture).Height;
+							var rect = new Rectangle(i * tw, j * th, tw, th);
+							if(rect.Intersects(new Rectangle((int)x, (int)y, w, h))) {
+								return true;
+							}
+						}
 					}
 				}
 			}

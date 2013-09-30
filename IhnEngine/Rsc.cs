@@ -22,7 +22,6 @@ namespace IhnLib {
 			if(path != "") {
 				if(!rscs[typeof(T)].ContainsKey(path)) {
 					var newPath = Path.GetFullPath(path).Substring(3);
-					Ihn.Instance.Content.RootDirectory = Directory.GetCurrentDirectory().Substring(0, 3);
 					var dat = Ihn.Instance.Content.Load<T>(newPath);
 
 					if(dat.GetType() == typeof(Texture2D)) {

@@ -1,193 +1,95 @@
-//
-// SystemTilemap.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
-using System;
+﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 
 namespace IhnLib {
 	[Serializable]
-	public class SystemTilemap : ISystem{
-		public string Outline;
-		public Position OutlinePos = new Position(0, 0);
-		public Position TilePos = new Position(0, 0);
-		public Position LastPos = new Position(-1, -1);
-		public bool Dragging;
-		public bool mouseDownCleared = false;
-		public bool[,] SolidityMap = new bool[5, 5];
-		public List<Rectangle> OnScreenBlackZone = new List<Rectangle>();
-
-		public List<Type> ComponentsPathingWhitelist = new List<Type> {
-		};
-		
-		public SystemTilemap() {
-			EventManager.Listen("Tilemap Changed", updateSolidity);
-		}
-		void updateSolidity(object sender, EventArgs e) {
-			var entities = Ihn.Instance.GetEntitiesWith<ComponentTilesetSprite>();
-			float highx = 0;
-			float highy = 0;
-			for(int i = 0; i < entities.Count; i++) {
-				var pos = entities[i].GetComp<ComponentPosition>();
-				var sprite = entities[i].GetComp<ComponentTilesetSprite>();
-				highx = Math.Max(pos.X / sprite.TType.Size, highx);
-				highy = Math.Max(pos.Y / sprite.TType.Size, highy);
-			}
-			if(highx > SolidityMap.GetLength(0) - 1 ||
-			   highy > SolidityMap.GetLength(1) - 1) {
-				SolidityMap = new bool[(int)highx + 1, (int)highy + 1];
-			}
-			for(int i = 0; i < entities.Count; i++) {
-				var pos = entities[i].GetComp<ComponentPosition>();
-				var sprite = entities[i].GetComp<ComponentTilesetSprite>();
-				var passByWhitelist = false;
-				if(ComponentsPathingWhitelist.Count > 0) {
-					for(int j = 0; j < entities[i].Components.Count; j++) {
-						if(ComponentsPathingWhitelist.Contains(entities[i].GetComp(j).GetType())) {
-							passByWhitelist = true;
-							break;
-						}
-					}
-				}
-				if(!passByWhitelist && entities[i].HasComp<ComponentSolid>()) {
-					SolidityMap[(int)pos.X / sprite.TType.Size, (int)pos.Y / sprite.TType.Size] = true;
-				}
-				else {
-					SolidityMap[(int)pos.X / sprite.TType.Size, (int)pos.Y / sprite.TType.Size] = false;
-				}
-			}
-		}
+	public class SystemTilemap : ISystem {
 		public void Update(Ihn ihn, Entity entity) {
-			var teditor = entity.GetComp<ComponentTilemap>();
-			int size = teditor.Tiles[teditor.Selected].Size;
-			int mx = (int)(ihn.CameraPos.X + MouseHelper.X) / size * size;
-			int my = (int)(ihn.CameraPos.Y + MouseHelper.Y) / size * size;
-			var shouldUpdate = true;
-			for(int i = 0; i < OnScreenBlackZone.Count; i++) {
-				if(OnScreenBlackZone[i].Intersects(new Rectangle(MouseHelper.X, MouseHelper.Y, 1, 1))) {
-					shouldUpdate = false;
-					break;
-				}
+			var tm = entity.GetComp<ComponentTilemap>();
+			if(MouseHelper.MouseLeftDown()) {
+				var tex = Rsc.Load<Texture2D>(tm.SelectedTile.RootTexture);
+				tm.PlaceTile(tm.SelectedTile, 
+					Math.Max(0, (int)((MouseHelper.X + Ihn.Instance.CameraPos.X) / tex.Width)),
+					Math.Max(0, (int)((MouseHelper.Y + Ihn.Instance.CameraPos.Y) / tex.Height)));
 			}
-			if(shouldUpdate && teditor.Enabled) {
-				if(MouseHelper.MouseLeftPressed()) {
-					mouseDownCleared = true;
-				}
-				if(mouseDownCleared) {
-					if(MouseHelper.MouseLeftDown() && !Dragging && KeyHelper.KeyDown(Keys.LeftShift)) {
-						LastPos = new Position(mx, my);
-						Dragging = true;
-					}
-					if(KeyHelper.KeyReleased(Keys.LeftShift)) {
-						Dragging = false;
-					}
-					if(Dragging && MouseHelper.MouseLeftReleased() && KeyHelper.KeyDown(Keys.LeftShift)) {
-						if(LastPos.X > mx) {
-							int i = (int)LastPos.X;
-							LastPos.X = mx;
-							mx = i;
+		}
+		Random _r = new Random();
+		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
+			var tm = entity.GetComp<ComponentTilemap>();
+			for(int i = 0; i < tm.Map.GetLength(0); i++) {
+				for(int j = 0; j < tm.Map.GetLength(1); j++) {
+					var tile = tm.Map[i, j];
+					var seed = tm.Seeds[i, j];
+					var solid = tm.MapSolids[i, j];
+					var tex = tm.Textures[i, j];
+					if(tile.RootTexture != "" && tile.RootTexture != null) {
+						_r = new Random(seed);
+						if(tex == null || tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
+							if(tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
+								tm.ForceTextureBuilds.Remove(new Vector2(i, j));
+							}
+							RebuildTileTexture(tm, i, j, ref tile, solid, ref tex);
 						}
-						if(LastPos.Y > my) {
-							int i = (int)LastPos.Y;
-							LastPos.Y = my;
-							my = i;
-						}
-						for(int i = (int)LastPos.X; i <= mx; i += size) {
-							for(int j = (int)LastPos.Y; j <= my; j += size) {
-								PlaceTile(ihn, teditor.Tiles[teditor.Selected], i, j);
+						var drawRoot = new Vector2(i * tex.Width - ihn.CameraPos.X, j * tex.Height - ihn.CameraPos.Y);
+						spriteBatch.Draw(tex, drawRoot, Color.White);
+						for(int k = 0; k < tile.Flairs.Count; k++) {
+							var flair = tile.Flairs[k];
+							if(!solid.Contains(Direction.North) && flair.North) {
+								for(int l = 0; l < (int)((float)flair.Coverage / 100f * ((float)tex.Width)); l++) {
+									var flairtex = Rsc.Load<Texture2D>(flair.Texture);
+									spriteBatch.Draw(flairtex,
+										new Vector2(_r.Next(0, tex.Width + 1),
+											-_r.Next((int)flairtex.Height / 2, flairtex.Height) +
+												tm.Map[i, j].CutIn +
+												tex.Height * _r.Next(flair.MinDepth,
+													flair.MaxDepth) / 100f) +
+											drawRoot,
+										Color.White);
+								}
+							}
+							if(!solid.Contains(Direction.South) && flair.South) {
+								for(int l = 0; l < (int)((float)flair.Coverage / 100f * ((float)tex.Width)); l++) {
+									var flairtex = Rsc.Load<Texture2D>(flair.Texture);
+									spriteBatch.Draw(flairtex,
+										new Vector2(_r.Next(0, tex.Width + 1),
+											tex.Height + 
+											-flairtex.Height + 
+											_r.Next((int)flairtex.Height / 2, flairtex.Height) -
+												tm.Map[i, j].CutIn -
+												tex.Height * _r.Next(flair.MinDepth,
+													flair.MaxDepth) / 100f) +
+											drawRoot,
+										Color.White);
+								}
 							}
 						}
-						mx = MouseHelper.X / size * size;
-						my = MouseHelper.Y / size * size;
-						LastPos = new Position(-1, -1);
-						Dragging = false;
-					}
-					if(MouseHelper.MouseLeftDown() && !Dragging) {
-						PlaceTile(ihn, teditor.Tiles[teditor.Selected], mx, my);
-					}
-					if(MouseHelper.WheelDelta > 0) {
-						teditor.Selected = Math.Min(teditor.Tiles.Count - 1, teditor.Selected + 1);
-					}
-					if(MouseHelper.WheelDelta < 0) {
-						teditor.Selected = Math.Max(0, teditor.Selected - 1);
 					}
 				}
-			}
-			else {
-				mouseDownCleared = false;
 			}
 		}
 
-		public void PlaceTile(Ihn ihn, TileType tileType, int x, int y) {
-			var tiles = ihn.GetEntitiesWith<ComponentTilesetSprite>();
-			for(int i = 0; i < tiles.Count; i++) {
-				var tileSprite = tiles[i].GetComp<ComponentTilesetSprite>();
-				var tilePos = tiles[i].GetComp<ComponentPosition>();
-				if(tilePos.X == x && tilePos.Y == y && tileSprite.TType.Layer == tileType.Layer) {
-					ihn.RemoveEntity(tiles[i]);
+		private void RebuildTileTexture(ComponentTilemap tm, int i, int j, ref TileType tile, List<Direction> solid, ref Texture2D tex) {
+			tex = Rsc.Load<Texture2D>(tile.RootTexture);
+			if(!solid.Contains(Direction.North)) {
+				tex = tex.FillRectangle(new Rectangle(0, 0, tex.Width, tile.CutIn), Color.Transparent);
+				var rects = new List<Rectangle>();
+				for(int k = 0; k < _r.Next((int)(tex.Width / 2f), (int)(tex.Width / 1.2f)); k++) {
+					rects.Add(new Rectangle(_r.Next(0, tex.Width - 1), tile.CutIn, _r.Next(1, 3), _r.Next(1, 3)));
 				}
+				tex = tex.FillRectangles(rects, Color.Transparent);
 			}
-			Entity newTile = new Entity();
-			newTile.AddComp(new ComponentPosition(x, y));
-			if(tileType.Solid) {
-				newTile.AddComp(new ComponentSolid());
-			}
-			newTile.AddComp(new ComponentTilesetSprite(tileType));
-			if(tileType.TSpawner != null) {
-				newTile = tileType.TSpawner.Invoke(newTile);
-				EventManager.Raise("Tilemap Changed");
-			}
-			else {
-				if(SolidityMap.GetLength(0) < x / tileType.Size + 1 || SolidityMap.GetLength(1) < y / tileType.Size + 1) {
-					EventManager.Raise("Tilemap Changed");
+			if(!solid.Contains(Direction.South)) {
+				tex = tex.FillRectangle(new Rectangle(0, tex.Height - tile.CutIn, tex.Width, tile.CutIn), Color.Transparent);
+				var rects = new List<Rectangle>();
+				for(int k = 0; k < _r.Next((int)(tex.Width / 2f), (int)(tex.Width / 1.2f)); k++) {
+					rects.Add(new Rectangle(_r.Next(0, tex.Width - 1), tex.Height - tile.CutIn, _r.Next(1, 3), _r.Next(1, 3)));
 				}
-				else {
-					SolidityMap[(int)x / tileType.Size, (int)y / tileType.Size] = tileType.Solid;
-				}
+				tex = tex.FillRectangles(rects, Color.Transparent);
 			}
-			ihn.AddEntity(newTile);
-		}
-
-		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
-			var teditor = entity.GetComp<ComponentTilemap>();
-			if(teditor.Enabled) {
-				if(Outline != null) {
-					spriteBatch.Draw(Rsc.Load<Texture2D>(teditor.Tiles[teditor.Selected].Texture),
-									 new Rectangle((int)TilePos.X, (int)TilePos.Y, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size),
-									 new Rectangle(0, 0, teditor.Tiles[teditor.Selected].Size, teditor.Tiles[teditor.Selected].Size),
-									 Color.White);
-					spriteBatch.Draw(Rsc.Load<Texture2D>(Outline), OutlinePos.ToVector(), Color.White);
-				}
-				if(Dragging) {
-					int size = teditor.Tiles[teditor.Selected].Size;
-					int mx = MouseHelper.X / size * size;
-					int my = MouseHelper.Y / size * size;
-					int lpx = (int)LastPos.X;
-					int lpy = (int)LastPos.Y;
-					if(LastPos.X > mx) {
-						lpx = mx;
-						mx = (int)LastPos.X;
-					}
-					if(LastPos.Y > my) {
-						lpy = my;
-						my = (int)LastPos.Y;
-					}
-					for(int i = lpx; i <= mx + size; i++) {
-						spriteBatch.Draw(Art.GetPixel(), new Vector2(i, my + size) - ihn.CameraPos, Color.White);
-						spriteBatch.Draw(Art.GetPixel(), new Vector2(i, lpy) - ihn.CameraPos, Color.White);
-					}
-					for(int i = lpy; i <= my + size; i++) {
-						spriteBatch.Draw(Art.GetPixel(), new Vector2(mx + size, i) - ihn.CameraPos, Color.White);
-						spriteBatch.Draw(Art.GetPixel(), new Vector2(lpx, i) - ihn.CameraPos, Color.White);
-					}
-				}
-			}
+			Console.WriteLine("Built texture");
+			tm.Textures[i, j] = tex;
 		}
 		public List<Type> RequiredComponents {
 			get {

@@ -14,11 +14,12 @@ namespace IhnLib {
 	[Serializable]
 	public class SystemZombieAI : ISystem{
 		public Entity Following;
-		public SystemTilemap Map;
-		public SystemZombieAI(Entity following, SystemTilemap map) {
+		//TODO: Fix zombie AI for new tilemap system
+		//public SystemTilemap Map;
+		public SystemZombieAI(Entity following/*, SystemTilemap map*/) {
 			EventManager.Listen("Tilemap Changed", shouldRefreshPaths);
 			Following = following;
-			Map = map;
+			//Map = map;
 		}
 		static void shouldRefreshPaths(object sender, EventArgs e) {
 			var entities = Ihn.Instance.GetEntitiesWith<ComponentZombieAI>();
@@ -40,7 +41,7 @@ namespace IhnLib {
 			}
 			if(ai.ShouldRefreshPath) {
 				ai.ShouldRefreshPath = false;
-				ai.Path = Pathfinding.FindPath(Map.SolidityMap, new Vector2(pos.X / ai.TileSize, pos.Y / ai.TileSize), new Vector2(ai.ChaseX, ai.ChaseY));
+				//ai.Path = Pathfinding.FindPath(Map.SolidityMap, new Vector2(pos.X / ai.TileSize, pos.Y / ai.TileSize), new Vector2(ai.ChaseX, ai.ChaseY));
 			}
 			Vector2 nextPos;
 			if(ai.Path.Count > 1) {
