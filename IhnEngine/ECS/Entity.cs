@@ -7,6 +7,9 @@
 // Copyright (c) 2013 Gigimoi
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 
 namespace IhnLib {
 	[Serializable]
@@ -41,6 +44,22 @@ namespace IhnLib {
 			if(Components.ContainsKey(typeof(T))) {
 				Components.Remove(typeof(T));
 			}
+		}
+		public Entity Clone() {
+			Stream saveStream = new FileStream("ASD.ASD", FileMode.Create);
+			BinaryFormatter bin = new BinaryFormatter();
+			bin.Serialize(saveStream, this);
+			saveStream.Close();
+
+			Stream loadStream = new FileStream("ASD.ASD", FileMode.Open);
+			bin = new BinaryFormatter();
+			var ent = (Entity)bin.Deserialize(loadStream);
+			loadStream.Close();
+
+			File.Delete("ASD.ASD");
+
+			return ent;
+
 		}
 	}
 }
