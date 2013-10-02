@@ -19,7 +19,7 @@ namespace IhnLib {
 			if(!rscs.ContainsKey(typeof(T))) {
 				rscs.Add(typeof(T), new Dictionary<string, object>());
 			}
-			if(path != "") {
+			if(path != "" && path != null) {
 				if(!rscs[typeof(T)].ContainsKey(path)) {
 					var newPath = Path.GetFullPath(path).Substring(3);
 					var dat = Ihn.Instance.Content.Load<T>(newPath);
