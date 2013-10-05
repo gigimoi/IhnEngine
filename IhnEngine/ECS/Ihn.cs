@@ -8,7 +8,7 @@ using System.IO;
 namespace IhnLib {
 	public class Ihn : Game{
 		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
+		public SpriteBatch SBatch;
 		List<ISystem> Systems = new List<ISystem>();
 		List<Entity> Entities = new List<Entity>();
 		public Vector2 CameraPos;
@@ -23,7 +23,7 @@ namespace IhnLib {
 			graphics.PreferredBackBufferWidth = width;
 			graphics.PreferMultiSampling = true;
 			graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
-			graphics.PreferredBackBufferFormat = SurfaceFormat.RgbPvrtc4Bpp;
+			graphics.PreferredBackBufferFormat = SurfaceFormat.Rg32;
 			graphics.IsFullScreen = fullscreen;
 			Content.RootDirectory = Directory.GetCurrentDirectory().Substring(0, 3);
 			Instance = this;
@@ -89,7 +89,6 @@ namespace IhnLib {
 			_ecdict[t].Remove(entity);
 		}
 		Dictionary<Type, List<Entity>> _ecdict = new Dictionary<Type, List<Entity>>();
-		public SpriteBatch SBatch;
 		public List<Entity> GetEntitiesWith<T>() where T : Component {
 			if(_ecdict.ContainsKey(typeof(T))) {
 				return _ecdict[typeof(T)];
@@ -134,7 +133,7 @@ namespace IhnLib {
 		}
 		protected override void LoadContent()
 		{
-			spriteBatch = new SpriteBatch(GraphicsDevice);
+			SBatch = new SpriteBatch(GraphicsDevice);
 			EventManager.Raise("Ihn Load Rsc");
 		}
 		protected override void Update(GameTime gameTime)
@@ -155,22 +154,19 @@ namespace IhnLib {
 		protected override void Draw(GameTime gameTime)
 		{
 			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-			if(SBatch == null) {
-				SBatch = spriteBatch;
-			}
-			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, 
+			SBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, 
 			                  DepthStencilState.Default, RasterizerState.CullNone, null, 
 			                  Matrix.CreateScale(Zoom));
 			EventManager.Raise("Pre Ihn Render");
 			for(int i = 0; i < Systems.Count; i++) {
 				for(int j = 0; j < Entities.Count; j++) {
 					if(SystemHelper.CanSystemRunOnEntity(Systems[i], Entities[j])) {
-						Systems[i].Render(this, spriteBatch, Entities[j]);
+						Systems[i].Render(this, SBatch, Entities[j]);
 					}
 				}
 			}
 			EventManager.Raise("Post Ihn Render");
-			spriteBatch.End();
+			SBatch.End();
 			base.Draw(gameTime);
 		}
 	}

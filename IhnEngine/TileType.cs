@@ -8,6 +8,7 @@
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using InhLib;
 
 namespace IhnLib {
 	public delegate Entity TileSpawner(Entity entity);
@@ -20,6 +21,27 @@ namespace IhnLib {
 			Solid = solid;
 			Layer = layer;
 			TSpawner = null;
+		}
+		public TileType(string path) {
+			var file = new IniFile(path);
+			RootTexture = file.IniReadValue("Root", "Image");
+			CutIn = Int32.Parse(file.IniReadValue("Root", "Cutin"));
+			Solid = Boolean.Parse(file.IniReadValue("Root", "Solid"));
+			TSpawner = null;
+			Layer = Int32.Parse(file.IniReadValue("Root", "Layer"));
+			Flairs = new List<Flair>();
+			int flairCount = Int32.Parse(file.IniReadValue("Root", "Flairs"));
+			for(int i = 1; i <= flairCount; i++) {
+				Flairs.Add(new Flair(
+					file.IniReadValue("Flair" + i, "Image"),
+					Int32.Parse(file.IniReadValue("Flair" + i, "Frequency")),
+					Boolean.Parse(file.IniReadValue("Flair" + i, "OnNorth")),
+					Boolean.Parse(file.IniReadValue("Flair" + i, "OnEast")),
+					Boolean.Parse(file.IniReadValue("Flair" + i, "OnSouth")),
+					Boolean.Parse(file.IniReadValue("Flair" + i, "OnWest")),
+					Int32.Parse(file.IniReadValue("Flair" + i, "MinDepth")),
+					Int32.Parse(file.IniReadValue("Flair" + i, "MaxDepth"))));
+			}
 		}
 		public string RootTexture;
 		public int CutIn;

@@ -21,10 +21,10 @@ namespace IhnLib {
 				if(sprite.Textures[i] != null) {
 					if(entity.HasComp<ComponentSize>()) {
 						var size = entity.GetComp<ComponentSize>();
-						spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Textures[i]), new Rectangle((int)pos.X - (int)ihn.CameraPos.X, (int)pos.Y - (int)ihn.CameraPos.Y, size.Width, size.Height), sprite.Source.ToRect(), Color.White, sprite.Rotation, sprite.Origin, sprite.Mirror, 0);
+						spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Textures[i]), new Rectangle((int)pos.X - (int)ihn.CameraPos.X, (int)pos.Y - (int)ihn.CameraPos.Y, size.Width, size.Height), sprite.Source.ToRect(), Color.White, MathHelper.ToRadians(sprite.Rotation), sprite.Origin.ToVector(), sprite.Mirror, 0);
 					}
 					else {
-						spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Textures[i]), new Rectangle((int)pos.X - (int)ihn.CameraPos.X, (int)pos.Y - (int)ihn.CameraPos.Y, (int)sprite.Source.Width, (int)sprite.Source.Height), sprite.Source.ToRect(), Color.White, sprite.Rotation, sprite.Origin, sprite.Mirror, 0);
+						spriteBatch.Draw(Rsc.Load<Texture2D>(sprite.Textures[i]), new Rectangle((int)pos.X - (int)ihn.CameraPos.X, (int)pos.Y - (int)ihn.CameraPos.Y, (int)sprite.Source.Width, (int)sprite.Source.Height), sprite.Source.ToRect(), Color.White, MathHelper.ToRadians(sprite.Rotation), sprite.Origin.ToVector(), sprite.Mirror, 0);
 					}
 				}
 			}

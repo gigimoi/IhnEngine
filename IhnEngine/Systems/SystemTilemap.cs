@@ -17,6 +17,12 @@ namespace IhnLib {
 					Math.Max(0, (int)((MouseHelper.X + Ihn.Instance.CameraPos.X) / tex.Width)),
 					Math.Max(0, (int)((MouseHelper.Y + Ihn.Instance.CameraPos.Y) / tex.Height)));
 			}
+			if(MouseHelper.MouseRightDown() && tm.EditMode) {
+				var tex = Rsc.Load<Texture2D>(tm.SelectedTile.RootTexture);
+				tm.PlaceTile(new TileType(),
+					Math.Max(0, (int)((MouseHelper.X + Ihn.Instance.CameraPos.X) / tex.Width)),
+					Math.Max(0, (int)((MouseHelper.Y + Ihn.Instance.CameraPos.Y) / tex.Height)));
+			}
 		}
 		Random _r = new Random();
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
@@ -41,35 +47,49 @@ namespace IhnLib {
 							RebuildTileTexture(tm, i, j, ref tile, solid, ref tex);
 						}
 						var drawRoot = new Vector2(i * tex.Width - ihn.CameraPos.X, j * tex.Height - ihn.CameraPos.Y);
-						spriteBatch.Draw(tex, drawRoot, Color.White);
+						spriteBatch.Draw(tex, new Rectangle((int)drawRoot.X, (int)drawRoot.Y, tex.Width, tex.Height),
+							null, Color.White, 0, new Vector2(0, 0), SpriteEffects.None, 0);
 						for(int k = 0; k < tile.Flairs.Count; k++) {
 							var flair = tile.Flairs[k];
 							if(!solid.Contains(Direction.North) && flair.North) {
 								for(int l = 0; l < (int)((float)flair.Coverage / 100f * ((float)tex.Width)); l++) {
 									var flairtex = Rsc.Load<Texture2D>(flair.Texture);
 									spriteBatch.Draw(flairtex,
-										new Vector2(_r.Next(-flairtex.Width / 2, tex.Width + 2 - flairtex.Width / 2 - 1),
-											-_r.Next((int)flairtex.Height / 2, flairtex.Height) +
+										new Rectangle(
+											(int)(drawRoot.X + 
+												_r.Next(-flairtex.Width / 2, tex.Width + 2 - flairtex.Width / 2 - 1)),
+											(int)(drawRoot.Y + -_r.Next((int)flairtex.Height / 2, flairtex.Height) +
 												tm.Map[i, j].CutIn +
 												tex.Height * _r.Next(flair.MinDepth,
-													flair.MaxDepth) / 100f) +
-											drawRoot,
-										Color.White);
+													flair.MaxDepth) / 100f),
+											flairtex.Width, 
+											flairtex.Height),
+										null,
+										Color.White,
+										0, new Vector2(0, 0),
+										SpriteEffects.None, 0);
 								}
 							}
 							if(!solid.Contains(Direction.South) && flair.South) {
 								for(int l = 0; l < (int)((float)flair.Coverage / 100f * ((float)tex.Width)); l++) {
 									var flairtex = Rsc.Load<Texture2D>(flair.Texture);
 									spriteBatch.Draw(flairtex,
-										new Vector2(_r.Next(-flairtex.Width / 2, tex.Width + 2 - flairtex.Width / 2 - 1),
-											tex.Height + 
-											-flairtex.Height + 
-											_r.Next((int)flairtex.Height / 2, flairtex.Height) -
+										new Rectangle(
+											(int)(drawRoot.X + 
+												_r.Next(-flairtex.Width / 2, tex.Width + 2 - flairtex.Width / 2 - 1)),
+											(int)(drawRoot.Y + 
+												tex.Height + 
+												-flairtex.Height + 
+												_r.Next((int)flairtex.Height / 2, flairtex.Height) -
 												tm.Map[i, j].CutIn -
 												tex.Height * _r.Next(flair.MinDepth,
-													flair.MaxDepth) / 100f) +
-											drawRoot,
-										Color.White);
+													flair.MaxDepth) / 100f),
+											flairtex.Width,
+											flairtex.Height),
+										null,
+										Color.White,
+										0, new Vector2(0, 0),
+										SpriteEffects.None, 0);
 								}
 							}
 						}
@@ -96,7 +116,6 @@ namespace IhnLib {
 				}
 				tex = tex.FillRectangles(rects, Color.Transparent);
 			}
-			Console.WriteLine("Built texture" + DateTime.Now.Millisecond);
 			tm.Textures[i, j] = tex;
 		}
 		public List<Type> RequiredComponents {
