@@ -36,16 +36,16 @@ namespace IhnLib {
 		private void updateSolids(int x, int y) {
 			MapSolids[x, y].Clear();
 			if(y - 1 >= 0) {
-				if(Map[x, y - 1] == Map[x, y]) { MapSolids[x, y].Add(Direction.North); }
+                if (Map[x, y - 1].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.North); }
 			}
 			if(x + 1 < MapSolids.GetLength(0)) {
-				if(Map[x + 1, y] == Map[x, y]) { MapSolids[x, y].Add(Direction.East); }
+                if (Map[x + 1, y].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.East); }
 			}
 			if(y + 1 < MapSolids.GetLength(1)) {
-				if(Map[x, y + 1] == Map[x, y]) { MapSolids[x, y].Add(Direction.South); }
+                if (Map[x, y + 1].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.South); }
 			}
 			if(x - 1 >= 0) {
-				if(Map[x - 1, y] == Map[x, y]) { MapSolids[x, y].Add(Direction.West); }
+                if (Map[x - 1, y].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.West); }
 			}
 		}
 	}

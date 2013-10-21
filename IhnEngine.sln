@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.20827.3
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IhnLib", "IhnEngine\IhnLib.csproj", "{EF62FECE-E4B7-4A43-8B5B-75BAF2D99D53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodGrove", "..\..\Games\IhnEngine\BloodGrove\BloodGrove.csproj", "{7B8DDCC0-5F46-4563-AF56-C073EBA21AB3}"
@@ -16,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaceSwingerInstaller", "..\..\Games\IhnEngine\MaceSwinger\Installer\MaceSwingerInstaller\MaceSwingerInstaller.csproj", "{0B37AEF9-4D4F-43D3-9C4A-72EFA6031346}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaceSwingerAssets", "..\..\Games\IhnEngine\MaceSwinger\MaceSwingerAssetsProject\MaceSwingerAssets.csproj", "{B5EC992C-7233-4034-AE0B-2BE0BED259A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TilePreviewer", "..\..\Games\IhnEngine\MaceSwinger\Tools\TilePreviewer\TilePreviewer.csproj", "{72882DF6-3AC7-42D2-8DDD-E117F51F1D23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +51,10 @@ Global
 		{B5EC992C-7233-4034-AE0B-2BE0BED259A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5EC992C-7233-4034-AE0B-2BE0BED259A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5EC992C-7233-4034-AE0B-2BE0BED259A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72882DF6-3AC7-42D2-8DDD-E117F51F1D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72882DF6-3AC7-42D2-8DDD-E117F51F1D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72882DF6-3AC7-42D2-8DDD-E117F51F1D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72882DF6-3AC7-42D2-8DDD-E117F51F1D23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
