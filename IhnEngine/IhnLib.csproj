@@ -41,11 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behavior Trees\BehaviorTreeNode.cs" />
+    <Compile Include="Components\ComponentEquipable.cs" />
+    <Compile Include="Gui\ComponentInventorySprite.cs" />
     <Compile Include="Components\ComponentMultiSprite.cs" />
     <Compile Include="Components\ComponentTilemap.cs" />
     <Compile Include="Extern\BmFont.cs" />
     <Compile Include="FontRenderer.cs" />
     <Compile Include="Font.cs" />
+    <Compile Include="Gui\Control.cs" />
+    <Compile Include="Gui\ControlItemSlot.cs" />
+    <Compile Include="Gui\ControlPanel.cs" />
+    <Compile Include="Gui\ControlSprite.cs" />
+    <Compile Include="Gui\ControlTileSprite.cs" />
+    <Compile Include="Gui\Gui.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rsc.cs" />
