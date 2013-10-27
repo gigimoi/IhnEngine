@@ -2,3 +2,4 @@ C:\Programming\Engines\IhnEngine\IhnEngine\bin\Debug\IhnEngine.dll
 C:\Programming\Engines\IhnEngine\IhnEngine\bin\Debug\IhnEngine.pdb
 C:\Programming\Engines\IhnEngine\IhnEngine\obj\Debug\IhnEngine.dll
 C:\Programming\Engines\IhnEngine\IhnEngine\obj\Debug\IhnEngine.pdb
+C:\Programming\Engines\IhnEngine\IhnEngine\obj\Debug\IhnLib.csprojResolveAssemblyReference.cache

@@ -23,6 +23,7 @@ namespace IhnLib {
 				}
 			}
 		}
+        public static string DefaultImg = "";
 		public string Img;
 		public ItemSlotDelegate ItemAdded;
 		public ItemSlotDelegate ItemRemoved;
@@ -34,12 +35,12 @@ namespace IhnLib {
             this.Img = img;
 		}
 		public override void Render(Ihn ihn, SpriteBatch spriteBatch) {
-			if(Item == null) {
+			if(Item == null && DefaultImg != "") {
 				var img = Rsc.Load<Texture2D>(Img);
 				spriteBatch.Draw(img, new Rectangle((int)Root.X, (int)Root.Y, img.Width, img.Height), null, Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 0);
 			}
 			else {
-				var img = Rsc.Load<Texture2D>(Img);
+                var img = Rsc.Load<Texture2D>(DefaultImg);
 				spriteBatch.Draw(img, new Rectangle((int)Root.X, (int)Root.Y, img.Width, img.Height), null, Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 0);
 			}
 			if(Item != null) {

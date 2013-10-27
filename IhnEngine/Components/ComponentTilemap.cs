@@ -34,19 +34,21 @@ namespace IhnLib {
 			}
 		}
 		private void updateSolids(int x, int y) {
-			MapSolids[x, y].Clear();
-			if(y - 1 >= 0) {
-                if (Map[x, y - 1].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.North); }
-			}
-			if(x + 1 < MapSolids.GetLength(0)) {
-                if (Map[x + 1, y].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.East); }
-			}
-			if(y + 1 < MapSolids.GetLength(1)) {
-                if (Map[x, y + 1].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.South); }
-			}
-			if(x - 1 >= 0) {
-                if (Map[x - 1, y].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.West); }
-			}
+            if (x >= 0 && y >= 0 && x < MapSolids.GetLength(0) && y < MapSolids.GetLength(1)) {
+                MapSolids[x, y].Clear();
+                if (y - 1 >= 0) {
+                    if (Map[x, y - 1].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.North); }
+                }
+                if (x + 1 < MapSolids.GetLength(0)) {
+                    if (Map[x + 1, y].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.East); }
+                }
+                if (y + 1 < MapSolids.GetLength(1)) {
+                    if (Map[x, y + 1].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.South); }
+                }
+                if (x - 1 >= 0) {
+                    if (Map[x - 1, y].Solid == Map[x, y].Solid) { MapSolids[x, y].Add(Direction.West); }
+                }
+            }
 		}
 	}
 }

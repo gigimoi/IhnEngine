@@ -123,10 +123,9 @@ namespace IhnLib {
 				tex = tex.FillRectangles(rects, Color.Transparent);
 			}
 			if(!solid.Contains(Direction.South)) {
-				tex = tex.FillRectangle(new Rectangle(0, tex.Height - tile.CutIn, tex.Width, tile.CutIn), Color.Transparent);
 				var rects = new List<Rectangle>();
 				for(int k = 0; k < _r.Next((int)(tex.Width / 2f), (int)(tex.Width / 1.2f)); k++) {
-					rects.Add(new Rectangle(_r.Next(0, tex.Width - 1), tex.Height - tile.CutIn, _r.Next(1, 3), _r.Next(1, 3)));
+					rects.Add(new Rectangle(_r.Next(0, tex.Width - 1), tex.Height - tile.CutIn + 1, _r.Next(1, 3), _r.Next(1, 3)));
 				}
 				tex = tex.FillRectangles(rects, Color.Transparent);
 			}
