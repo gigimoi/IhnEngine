@@ -10,6 +10,7 @@ namespace IhnLib {
 	[Serializable]
 	public class ComponentTilemap : Component {
 		public Keys CloseKey = Keys.F3;
+        public bool AllowKeyToggle = false;
 		public bool EditMode = false;
 		public TileType SelectedTile;
 		public TileType[,] Map = new TileType[500, 200];

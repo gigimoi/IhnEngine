@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace IhnLib {
 	public class Gui {
-		public static Control RootControl = new Control(null, new Vector2(0, 0));
+		public static Control RootControl = new Control(null, new Vector2(10000, 10000));
 		public static Entity ItemMoving;
 		public static ControlItemSlot ItemTakenFrom;
 		private static bool listening = false;

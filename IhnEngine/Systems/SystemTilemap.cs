@@ -8,7 +8,7 @@ namespace IhnLib {
 	public class SystemTilemap : ISystem {
 		public void Update(Ihn ihn, Entity entity) {
 			var tm = entity.GetComp<ComponentTilemap>();
-			if(KeyHelper.KeyPressed(tm.CloseKey)) {
+            if (KeyHelper.KeyPressed(tm.CloseKey) && tm.AllowKeyToggle) {
 				tm.EditMode = !tm.EditMode;
 			}
 			if(MouseHelper.MouseLeftDown() && tm.EditMode && tm.SelectedTile != default(TileType)) {
@@ -42,6 +42,9 @@ namespace IhnLib {
             var tile = tm.Map[i, j];
             var seed = tm.Seeds[i, j];
             var solid = tm.MapSolids[i, j];
+            if (tm.Textures == null) {
+                tm.Textures = new Texture2D[tm.Map.GetLength(0), tm.Map.GetLength(1)];
+            }
             var tex = tm.Textures[i, j];
             if (tile.RootTexture != "" && tile.RootTexture != null) {
                 _r = new Random(seed);

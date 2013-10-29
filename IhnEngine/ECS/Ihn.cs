@@ -31,7 +31,7 @@ namespace IhnLib {
 
 		public static void CopyDebugAssets() {
 			var dir = new DirectoryInfo("assets");
-			var files = new DirectoryInfo(@"..\..\assets");
+			var files = new DirectoryInfo("../../assets");
 			if(dir.Exists) {
 				foreach(FileInfo file in dir.GetFiles()) {
 					file.Delete();
@@ -40,11 +40,11 @@ namespace IhnLib {
 					d.Delete(true);
 				}
 			}
-			foreach(string dirPath in Directory.GetDirectories(@"..\..\assets", "*", SearchOption.AllDirectories)) {
-				Directory.CreateDirectory(dirPath.Replace(@"..\..\assets", "assets"));
+			foreach(string dirPath in Directory.GetDirectories(@"../../assets", "*", SearchOption.AllDirectories)) {
+				Directory.CreateDirectory(dirPath.Replace(@"../../assets", "assets"));
 			}
-			foreach(string newPath in Directory.GetFiles(@"..\..\assets", "*", SearchOption.AllDirectories)) {
-				File.Copy(newPath, newPath.Replace(@"..\..\assets", "assets"));
+			foreach(string newPath in Directory.GetFiles(@"../../assets", "*", SearchOption.AllDirectories)) {
+				File.Copy(newPath, newPath.Replace(@"../../assets", "assets"));
 			}
 		}
 		public void ClearSystems() {
