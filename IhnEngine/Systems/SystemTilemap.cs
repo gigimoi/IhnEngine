@@ -11,7 +11,7 @@ namespace IhnLib {
 			if(KeyHelper.KeyPressed(tm.CloseKey)) {
 				tm.EditMode = !tm.EditMode;
 			}
-			if(MouseHelper.MouseLeftDown() && tm.EditMode) {
+			if(MouseHelper.MouseLeftDown() && tm.EditMode && tm.SelectedTile != default(TileType)) {
 				var tex = Rsc.Load<Texture2D>(tm.SelectedTile.RootTexture);
 				tm.PlaceTile(tm.SelectedTile, 
 					Math.Max(0, (int)((MouseHelper.X + Ihn.Instance.CameraPos.X) / tex.Width)),
@@ -60,7 +60,7 @@ namespace IhnLib {
                 RenderTile(spriteBatch, tm, tile, solid, drawRoot, _r, tex);
             }
         }
-
+        //TODO: Render tile to a rendertarget, save, and render that instead of generating flairs at runtime
         public static void RenderTile(SpriteBatch spriteBatch, ComponentTilemap tm,  TileType tile, List<Direction> solid, Vector2 drawRoot, Random _r = null, Texture2D tex = null) {
             tex = tex != null ? tex : Rsc.Load<Texture2D>(tile.RootTexture);
             spriteBatch.Draw(tex, new Rectangle((int)drawRoot.X, (int)drawRoot.Y, tex.Width, tex.Height),
