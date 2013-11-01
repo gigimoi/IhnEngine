@@ -50,6 +50,7 @@
     <Compile Include="Font.cs" />
     <Compile Include="Gui\Control.cs" />
     <Compile Include="Gui\ControlItemSlot.cs" />
+    <Compile Include="Gui\ControlLabel.cs" />
     <Compile Include="Gui\ControlPanel.cs" />
     <Compile Include="Gui\ControlSprite.cs" />
     <Compile Include="Gui\ControlTileSprite.cs" />

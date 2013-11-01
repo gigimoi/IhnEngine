@@ -49,7 +49,7 @@ namespace IhnLib {
             if (tile.RootTexture != "" && tile.RootTexture != null) {
                 _r = new Random(seed);
                 if (tex == null || tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
-                    _r = new Random(seed + (int)(DateTime.UtcNow.Ticks * seed));
+                    _r = new Random(seed /*+ (int)(DateTime.UtcNow.Ticks * seed)*/);
                     while (tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
                         tm.ForceTextureBuilds.Remove(new Vector2(i, j));
                     }
