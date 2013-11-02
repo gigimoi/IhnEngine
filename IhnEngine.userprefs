@@ -1,28 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Games\IhnEngine\MaceSwinger\src\Gui\SystemIngameGui.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ActiveRuntime="MS.NET" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="IhnEngine\Save\SaveManager.cs">
     <Files>
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Assets.cs" Line="85" Column="52" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Gui\SystemIngameGui.cs" Line="72" Column="5" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Combat\ItemType.cs" Line="14" Column="52" />
-      <File FileName="..\..\Games\IhnEngine\MaceSwinger\src\Player\ComponentPlayer.cs" Line="20" Column="28" />
+      <File FileName="IhnEngine\Font.cs" Line="1" Column="1" />
+      <File FileName="IhnEngine\Save\SaveManager.cs" Line="48" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="IhnLib" expanded="True">
-            <Node name="ECS" expanded="True" />
-            <Node name="Systems" expanded="True" />
-          </Node>
-          <Node name="MaceSwinger" expanded="True">
-            <Node name="src" expanded="True">
-              <Node name="Combat" expanded="True">
-                <Node name="Weapon" expanded="True" />
-              </Node>
-              <Node name="Gui" expanded="True">
-                <Node name="SystemIngameGui.cs" selected="True" />
-              </Node>
-              <Node name="Player" expanded="True" />
+            <Node name="Save" expanded="True">
+              <Node name="SaveManager.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -31,9 +19,7 @@
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>Click here to add a new watch</Value>
-        </State>
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

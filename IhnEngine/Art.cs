@@ -1,10 +1,3 @@
-//
-// Art.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
