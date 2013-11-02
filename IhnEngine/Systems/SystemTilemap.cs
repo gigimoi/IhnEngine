@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 namespace IhnLib {
 	[Serializable]
 	public class SystemTilemap : ISystem {
+        public static bool Spaz = false; //Enabling causes tiles to spaz when placed. Much fun such wow
 		public void Update(Ihn ihn, Entity entity) {
 			var tm = entity.GetComp<ComponentTilemap>();
             if (KeyHelper.KeyPressed(tm.CloseKey) && tm.AllowKeyToggle) {
@@ -49,7 +50,7 @@ namespace IhnLib {
             if (tile.RootTexture != "" && tile.RootTexture != null) {
                 _r = new Random(seed);
                 if (tex == null || tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
-                    _r = new Random(seed /*+ (int)(DateTime.UtcNow.Ticks * seed)*/);
+                    _r = new Random(seed + (Spaz ?  (int)(DateTime.UtcNow.Ticks * seed) : 0));
                     while (tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
                         tm.ForceTextureBuilds.Remove(new Vector2(i, j));
                     }

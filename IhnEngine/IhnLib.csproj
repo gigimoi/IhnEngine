@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Behavior Trees\BehaviorTreeNode.cs" />
     <Compile Include="Components\ComponentEquipable.cs" />
+    <Compile Include="Extern\EventInput.cs" />
     <Compile Include="Gui\ComponentInventorySprite.cs" />
     <Compile Include="Components\ComponentMultiSprite.cs" />
     <Compile Include="Components\ComponentTilemap.cs" />
