@@ -11,6 +11,7 @@ namespace IhnLib {
 		public static ControlItemSlot ItemTakenFrom;
 		private static bool listening = false;
         public static string CursorImg;
+		public static Control Focus;
 		public Gui() {
 			if(listening) {
 				EventManager.UnListen("Post Ihn Update", Update);
@@ -22,6 +23,9 @@ namespace IhnLib {
 		}
 
 		private void Update(object sender, EventArgs e) {
+			if (Gui.Focus != null && Gui.Focus.Enabled == false) {
+				Gui.Focus = null;
+			}
 			if(RootControl.Enabled) {
 				RootControl.Update(Ihn.Instance);
 			}

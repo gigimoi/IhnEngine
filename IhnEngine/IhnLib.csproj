@@ -106,8 +106,5 @@
     <Compile Include="Rsc.cs" />
     <Compile Include="TileType.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IhnEngine\" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
