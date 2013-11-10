@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace IhnLib {
+    /// <summary>
+    /// Moves an entity based on its velocity
+    /// </summary>
 	[Serializable]
 	public class SystemVelocityMovement : ISystem{
+        /// <summary>
+        /// Moves the entity contained in Ihn
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="entity">Entity to accelerate</param>
 		public void Update(Ihn ihn, Entity entity) {
 			var pos = entity.GetComp<ComponentPosition>();
 			var velocity = entity.GetComp<ComponentVelocity>();
@@ -46,10 +54,17 @@ namespace IhnLib {
 				pos.Y -= velocity.Y > 0 ? 1 : -1;
 			}
 		}
-
+        /// <summary>
+        /// This system does not render
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="spriteBatch">Spritebatch to draw with</param>
+        /// <param name="entity">Entity to draw</param>
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 		}
-
+        /// <summary>
+        /// Components required to run system on an entity. ComponentPosition and ComponentVelocity
+        /// </summary>
 		public List<Type> RequiredComponents {
 			get {
 				return new List<Type>() {

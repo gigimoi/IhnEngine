@@ -4,12 +4,23 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+    /// <summary>
+    /// Renders and allows editing of a tilemap
+    /// </summary>
 	[Serializable]
 	public class SystemTilemap : ISystem {
-        public static bool Spaz = false; //Enabling causes tiles to spaz when placed. Much fun such wow
+        /// <summary>
+        /// Enable to cause tiles to spazm when placed. Much fun
+        /// </summary>
+        public static bool Spaz = false;
+        /// <summary>
+        /// Updates the tilemap
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="entity">Entity to update</param>
 		public void Update(Ihn ihn, Entity entity) {
 			var tm = entity.GetComp<ComponentTilemap>();
-            if (KeyHelper.KeyPressed(tm.CloseKey) && tm.AllowKeyToggle) {
+            if (KeyHelper.KeyPressed(tm.EditModeToggleKey) && tm.AllowEditModeToggle) {
 				tm.EditMode = !tm.EditMode;
 			}
 			if(MouseHelper.MouseLeftDown() && tm.EditMode && tm.SelectedTile != default(TileType)) {
@@ -26,6 +37,12 @@ namespace IhnLib {
 			}
 		}
 		Random _r = new Random();
+        /// <summary>
+        /// Renders the tilemap
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="spriteBatch">Spritebatch to draw with</param>
+        /// <param name="entity">Entity to draw</param>
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 			var tm = entity.GetComp<ComponentTilemap>();
 			for(int i = (int)Math.Min(tm.Map.GetLength(0), Math.Max(0, ihn.CameraPos.X / 32));
@@ -38,7 +55,16 @@ namespace IhnLib {
                 }
 			}
 		}
-
+        /// <summary>
+        /// Checks if a tile needs to be recut and cuts it
+        /// </summary>
+        /// <param name="ihn"></param>
+        /// <param name="spriteBatch"></param>
+        /// <param name="tm"></param>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        /// <param name="rx"></param>
+        /// <param name="ry"></param>
         private void PreRenderTile(Ihn ihn, SpriteBatch spriteBatch, ComponentTilemap tm, int i, int j, int rx = -1, int ry = -1) {
             var tile = tm.Map[i, j];
             var seed = tm.Seeds[i, j];
@@ -65,6 +91,16 @@ namespace IhnLib {
             }
         }
         //TODO: Render tile to a rendertarget, save, and render that instead of generating flairs at runtime
+        /// <summary>
+        /// Renders a tile at drawRoot
+        /// </summary>
+        /// <param name="spriteBatch">Spritebatch to render with</param>
+        /// <param name="tm">Tilemap to render from</param>
+        /// <param name="tile">TileType to render</param>
+        /// <param name="solid">List of directions that the tile considers solid</param>
+        /// <param name="drawRoot">Literal x and y to draw at</param>
+        /// <param name="_r">Random to generate with</param>
+        /// <param name="tex">Prebuilt texture, will build if null</param>
         public static void RenderTile(SpriteBatch spriteBatch, ComponentTilemap tm,  TileType tile, List<Direction> solid, Vector2 drawRoot, Random _r = null, Texture2D tex = null) {
             tex = tex != null ? tex : Rsc.Load<Texture2D>(tile.RootTexture);
             spriteBatch.Draw(tex, new Rectangle((int)drawRoot.X, (int)drawRoot.Y, tex.Width, tex.Height),
@@ -115,7 +151,7 @@ namespace IhnLib {
                 }
             }
         }
-
+        //Cuts into a rectangle
 		private void RebuildTileTexture(ComponentTilemap tm, int i, int j, ref TileType tile, List<Direction> solid, ref Texture2D tex) {
 			tex = Rsc.Load<Texture2D>(tile.RootTexture);
 			if(!solid.Contains(Direction.North)) {
@@ -135,6 +171,9 @@ namespace IhnLib {
 			}
 			tm.Textures[i, j] = tex;
 		}
+        /// <summary>
+        /// List of Components required to run on an entity, ComponentTileMap
+        /// </summary>
 		public List<Type> RequiredComponents {
 			get {
 				return new List<Type>() {

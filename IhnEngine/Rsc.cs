@@ -6,9 +6,19 @@ using Microsoft.Xna.Framework;
 using System.Threading;
 
 namespace IhnLib {
+    /// <summary>
+    /// Manages loading and unloading resources
+    /// </summary>
 	public static class Rsc {
 		static Dictionary<Type, Dictionary<string, object>> rscs = new Dictionary<Type, Dictionary<string, object>>();
-		public static T Load<T>(string path) {
+		
+        /// <summary>
+        /// Loads resource of type
+        /// </summary>
+        /// <typeparam name="T">Type of resource to load</typeparam>
+        /// <param name="path">Path to load resource from</param>
+        /// <returns>Loaded resource</returns>
+        public static T Load<T>(string path) {
 			if(!rscs.ContainsKey(typeof(T))) {
 				rscs.Add(typeof(T), new Dictionary<string, object>());
 			}
@@ -32,16 +42,22 @@ namespace IhnLib {
 			}
 			return default(T);
 		}
+        /// <summary>
+        /// Places one texture ontop of another and returns it
+        /// </summary>
+        /// <param name="spriteOne">Sprite to place spritetwo atop</param>
+        /// <param name="spriteTwo">Sprite to place atop spriteone</param>
+        /// <returns>Combined sprite</returns>
 		public static Texture2D CombineTextures(Texture2D spriteOne, Texture2D spriteTwo) {
 			Color[] CombinedColorData = new Color[spriteOne.Width * spriteOne.Height];
 			Color[] TempColorData = new Color[spriteTwo.Width * spriteTwo.Height];
 			spriteOne.GetData(CombinedColorData);
 			spriteTwo.GetData(TempColorData);
-			for(int i = 0; i < CombinedColorData.Length; i++) {
-				if(TempColorData[i].A != 0)
-					CombinedColorData[i] = TempColorData[i];
-			}
-
+            for (int i = 0; i < CombinedColorData.Length; i++) {
+                if (TempColorData[i].A != 0) {
+                    CombinedColorData[i] = TempColorData[i];
+                }
+            }
 			Texture2D returnTexture = new Texture2D(Ihn.Instance.GraphicsDevice, Math.Max(spriteOne.Width, spriteTwo.Width), Math.Max(spriteOne.Height, spriteTwo.Height));
 			returnTexture.SetData(CombinedColorData);
 

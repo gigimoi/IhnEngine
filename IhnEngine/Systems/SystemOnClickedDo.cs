@@ -1,17 +1,18 @@
-//
-// SystemOnClickedDo.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace IhnLib {
+    /// <summary>
+    /// Allows an entity to perform an action when clicked
+    /// </summary>
 	[Serializable]
-	public class SystemOnClickedDo : ISystem{
+	public class SystemOnClickedDo : ISystem {
+        /// <summary>
+        /// Checks for a click action and runs the action if the entity is clicked
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="entity">Entity to update</param>
 		public void Update(Ihn ihn, Entity entity) {
 			var pos = entity.GetComp<ComponentPosition>();
 			var x = pos.X;
@@ -52,8 +53,17 @@ namespace IhnLib {
 				}
 			}
 		}
+        /// <summary>
+        /// This system does not render
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="spriteBatch">Spritebatch to draw with</param>
+        /// <param name="entity">Entity to draw</param>
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 		}
+        /// <summary>
+        /// This system requires ComponentOnClickedDo and ComponentPosition
+        /// </summary>
 		public List<Type> RequiredComponents {
 			get {
 				return new List<Type>() {

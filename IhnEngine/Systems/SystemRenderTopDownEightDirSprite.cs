@@ -1,20 +1,27 @@
-//
-// SystemRenderTopDownEightDirSprite.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+    /// <summary>
+    /// Renders a top-down 8-directional shooter sprite
+    /// </summary>
 	[Serializable]
 	public class SystemRenderTopDownEightDirSprite : ISystem{
+        /// <summary>
+        /// This system does not update
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="entity">Entity to update</param>
 		public void Update(Ihn ihn, Entity entity) {
 		}
+        /// <summary>
+        /// Renders the 8-directional sprite
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="spriteBatch">Spritebatch to draw with</param>
+        /// <param name="entity">Entity to draw</param>
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 			var sprite = entity.GetComp<ComponentTopDownEightDirSprite>();
 			var pos = entity.GetComp<ComponentPosition>();
@@ -36,6 +43,9 @@ namespace IhnLib {
 			                 SpriteEffects.None, 
 			                 0);
 		}
+        /// <summary>
+        /// Components required to act on an entity, ComponentTopDownEightDirSprite, ComponentPosition, ComponentDirection
+        /// </summary>
 		public List<Type> RequiredComponents {
 			get {
 				return new List<Type>() {

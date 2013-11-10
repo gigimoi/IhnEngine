@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -18,8 +18,9 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <Externalconsole>true</Externalconsole>
+    <DocumentationFile>bin\Debug\IhnEngine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>
@@ -35,6 +36,7 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>..\..\..\..\Program Files %28x86%29\MonoGame\v3.0\Assemblies\WindowsGL\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
@@ -70,7 +72,6 @@
     <Compile Include="ECS\ISystem.cs" />
     <Compile Include="ECS\SystemHelper.cs" />
     <Compile Include="Extern\BmFont.cs" />
-    <Compile Include="Extern\EventInput.cs" />
     <Compile Include="Extern\Ini.cs" />
     <Compile Include="Gui\ComponentInventorySprite.cs" />
     <Compile Include="Gui\Control.cs" />
@@ -105,6 +106,9 @@
     <Compile Include="EventManager.cs" />
     <Compile Include="Rsc.cs" />
     <Compile Include="TileType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mainpage.dox" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,21 +1,24 @@
-//
-// SystemZombieAI.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+    /// <summary>
+    /// Horrifically broken
+    /// </summary>
 	[Serializable]
 	public class SystemZombieAI : ISystem{
+        /// <summary>
+        /// Entity to chase after
+        /// </summary>
 		public Entity Following;
 		//TODO: Fix zombie AI for new tilemap system
-		//public SystemTilemap Map;
+		//public SystemTilemap Map
+        /// <summary>
+        /// Instantiates a new system for zombie AI
+        /// </summary>
+        /// <param name="following">Entity to chase after</param>
 		public SystemZombieAI(Entity following/*, SystemTilemap map*/) {
 			EventManager.Listen("Tilemap Changed", shouldRefreshPaths);
 			Following = following;
@@ -27,7 +30,11 @@ namespace IhnLib {
 				entities[i].GetComp<ComponentZombieAI>().ShouldRefreshPath = true;
 			}
 		}
-
+        /// <summary>
+        /// Chases after the entity using a 2D pathmap
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="entity">Entity to update</param>
 		public void Update(Ihn ihn, Entity entity) {
 			var pos = entity.GetComp<ComponentPosition>();
 			var ai = entity.GetComp<ComponentZombieAI>();
@@ -71,8 +78,17 @@ namespace IhnLib {
 				entity.GetComp<ComponentDirection>().Dir = DirectionHelper.VectorToDirection(momentum);
 			}
 		}
+        /// <summary>
+        /// This system does not render
+        /// </summary>
+        /// <param name="ihn">Ihn entity is contained in</param>
+        /// <param name="spriteBatch">Spritebatch to draw with</param>
+        /// <param name="entity">Entity to draw</param>
 		public void Render(Ihn ihn, SpriteBatch spriteBatch, Entity entity) {
 		}
+        /// <summary>
+        /// Components required for an entity to be acted upon by this system, ComponentPosition and ComponentZombieAI
+        /// </summary>
 		public List<Type> RequiredComponents {
 			get {
 				return new List<Type>() {

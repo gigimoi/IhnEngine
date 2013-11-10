@@ -1,11 +1,11 @@
-﻿using BmFont;
+﻿using IhnLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
 namespace IhnLib {
-	public class FontRenderer {
+    class FontRenderer {
 		public FontRenderer(FontFile fontFile, Texture2D fontTexture) {
 			_fontFile = fontFile;
 			_texture = fontTexture;
@@ -82,9 +82,21 @@ namespace IhnLib {
 			return new Rectangle(dx, dy, width, height);
 		}
 	}
+    /// <summary>
+    /// Chooses how the text is oriented, similar to microsoft word
+    /// </summary>
 	public enum TextOrientation {
+        /// <summary>
+        /// Root of the text at the left
+        /// </summary>
 		Left,
+        /// <summary>
+        /// Root of text at the center
+        /// </summary>
 		Center,
+        /// <summary>
+        /// Root of text at the right
+        /// </summary>
 		Right
 	}
 }

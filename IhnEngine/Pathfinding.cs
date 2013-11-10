@@ -3,7 +3,17 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace IhnLib {
+    /// <summary>
+    /// Static class to aid in 2D pathing using A*
+    /// </summary>
 	public static class Pathfinding {
+        /// <summary>
+        /// Finds path along a 2D grid
+        /// </summary>
+        /// <param name="solidityMap">2D array of solids</param>
+        /// <param name="start">Vector of starting position</param>
+        /// <param name="end">Vector of ending position</param>
+        /// <returns>List of points to follow</returns>
 		public static List<Vector2> FindPath(bool[,] solidityMap, Vector2 start, Vector2 end) {
 			var finalPath = new List<Vector2>();
 			if(!(start.X < solidityMap.GetLength(0) - 1 &&
@@ -91,16 +101,37 @@ namespace IhnLib {
 			return finalPath;
 		}
 	}
+    /// <summary>
+    /// 2D position with pathing value
+    /// </summary>
 	public class Node {
+        /// <summary>
+        /// Constructs a node at position with no parent
+        /// </summary>
+        /// <param name="pos">Position of the node</param>
 		public Node(Vector2 pos) {
 			Pos = new Vector2((int)pos.X, (int)pos.Y);
 		}
+        /// <summary>
+        /// Constructs a node at position with parent
+        /// </summary>
+        /// <param name="pos">Position of the node</param>
+        /// <param name="parent">Node that led to this one</param>
 		public Node(Vector2 pos, Node parent) {
 			Pos = pos;
 			Parent = parent;
 		}
+        /// <summary>
+        /// Position of the node
+        /// </summary>
 		public Vector2 Pos;
+        /// <summary>
+        /// Node that led to this one. Null if a starting node
+        /// </summary>
 		public Node Parent;
+        /// <summary>
+        /// Value of the path that led here
+        /// </summary>
 		public int G;
 	}
 }

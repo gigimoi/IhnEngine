@@ -1,0 +1,13 @@
+digraph "C:/Programming/Games/IhnEngine/MaceSwinger/lib/IhnEngine/IhnEngine/obj/x86" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_f313919ed509e223f8c3060e905f6468 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="obj" fontname="Helvetica", fontsize="10", URL="dir_f313919ed509e223f8c3060e905f6468.html"]
+  subgraph clusterdir_50db6218f0a114480b5ea905c64ce2b0 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_50db6218f0a114480b5ea905c64ce2b0.html"];
+    dir_50db6218f0a114480b5ea905c64ce2b0 [shape=plaintext label="x86"];
+    dir_72524e26cbeb443865bd2e5049b5aba3 [shape=box label="Debug" color="black" fillcolor="white" style="filled" URL="dir_72524e26cbeb443865bd2e5049b5aba3.html"];
+  }
+  }
+}

@@ -6,9 +6,26 @@ using System.Linq;
 using System.Text;
 
 namespace IhnLib {
+    /// <summary>
+    /// Control that uses a 96x96 image to render a panel
+    /// </summary>
 	public class ControlPanel : Control{
+        /// <summary>
+        /// Path to image that is slived and rendered
+        /// </summary>
 		public string Img;
+        /// <summary>
+        /// Constructs a new control panel with a parent, size, and image path
+        /// </summary>
+        /// <param name="parent">Control to be a child of</param>
+        /// <param name="size">Width + Height of this panel</param>
+        /// <param name="img">Path to image</param>
         public ControlPanel(Control parent, Vector2 size, string img) : base(parent, size) { Img = img; }
+        /// <summary>
+        /// Renders the panel
+        /// </summary>
+        /// <param name="ihn">Ihn to render with</param>
+        /// <param name="spriteBatch">Spritebatch to render with</param>
 		public override void Render(Ihn ihn, SpriteBatch spriteBatch) {
 			for(int i = (int)Root.X + 32; i < Size.X + Root.X - 32; i += 32) {
 				for(int j = (int)Root.Y + 32; j < Size.Y + Root.Y - 32; j += 32) {

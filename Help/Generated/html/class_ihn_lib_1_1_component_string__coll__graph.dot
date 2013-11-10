@@ -1,0 +1,12 @@
+digraph "IhnLib.ComponentString"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="IhnLib.ComponentString",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Component",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ihn_lib_1_1_component.html",tooltip="Abstract class that is extended and added to entities "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Font" ,fontname="Helvetica"];
+  Node3 [label="IhnLib.DrawableFont",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ihn_lib_1_1_drawable_font.html",tooltip="Replacement for spritefont which cannot be created from ttfs "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Font" ,fontname="Helvetica"];
+  Node4 [label="BmFont.FontFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_bm_font_1_1_font_file.html"];
+}

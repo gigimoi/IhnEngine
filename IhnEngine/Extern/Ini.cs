@@ -4,13 +4,16 @@ using System.Text;
 
 //By BLaZiNiX @ http://www.codeproject.com/Articles/1966/An-INI-file-handling-class-using-C
 
-namespace InhLib
+namespace IhnLib
 {
 	/// <summary>
 	/// Create a New INI file to store or load data
 	/// </summary>
 	public class IniFile
 	{
+        /// <summary>
+        /// Path where the file was loaded from
+        /// </summary>
 		public string path;
 
 		[DllImport("kernel32")]

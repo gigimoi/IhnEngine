@@ -7,22 +7,62 @@ using System.Linq;
 using System.Text;
 
 namespace IhnLib {
+    /// <summary>
+    /// Stores data for a tilemap
+    /// </summary>
 	[Serializable]
 	public class ComponentTilemap : Component {
-		public Keys CloseKey = Keys.F3;
-        public bool AllowKeyToggle = false;
+        /// <summary>
+        /// Key used to enable/Disable editting
+        /// </summary>
+		public Keys EditModeToggleKey = Keys.F3;
+        /// <summary>
+        /// Allow EditModeToggleKey to function
+        /// </summary>
+        public bool AllowEditModeToggle = false;
+        /// <summary>
+        /// Currently in edit mode?
+        /// </summary>
 		public bool EditMode = false;
+        /// <summary>
+        /// Currently selected edit mode tile
+        /// </summary>
 		public TileType SelectedTile;
+        /// <summary>
+        /// 2D array of tile types
+        /// </summary>
 		public TileType[,] Map = new TileType[500, 200];
+        /// <summary>
+        /// 2D array of lists that the tiles collide into
+        /// </summary>
 		public List<Direction>[,] MapSolids = new List<Direction>[500, 200];
+        /// <summary>
+        /// 2D array of seeds used to generate flairs
+        /// </summary>
 		public int[,] Seeds = new int[500, 200];
+        /// <summary>
+        /// List of vectors to force texture rebuilds at
+        /// </summary>
 		public List<Vector2> ForceTextureBuilds = new List<Vector2>();
+        /// <summary>
+        /// Nonserialized 2D array of textures, regenerated when loaded
+        /// </summary>
 		[NonSerialized]
 		public Texture2D[,] Textures = new Texture2D[500, 200];
 		Random _r = new Random();
+        /// <summary>
+        /// Instantiates a new default tilemap
+        /// </summary>
 		public ComponentTilemap() {
 			for(int i = 0; i < MapSolids.GetLength(0); i++) { for(int j = 0; j < MapSolids.GetLength(1); j++) { MapSolids[i, j] = new List<Direction>(); Seeds[i, j] = (int)_r.Next() * 1000; } }
 		}
+        /// <summary>
+        /// Places a tile
+        /// </summary>
+        /// <param name="tileType">Type of tile to place</param>
+        /// <param name="x">XCoord of tile placement</param>
+        /// <param name="y">YCoord of tile placement</param>
+        /// <param name="updateTiles">Should it update tiles near it</param>
 		public void PlaceTile(TileType tileType, int x, int y, bool updateTiles = true) {
 			Map[x, y] = tileType;
 			if(updateTiles) {

@@ -1,0 +1,16 @@
+digraph "IhnLib.Gui"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="IhnLib.Gui",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Focus\nRootControl" ,fontname="Helvetica"];
+  Node2 [label="IhnLib.Control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ihn_lib_1_1_control.html"];
+  Node2 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Parent" ,fontname="Helvetica"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ItemMoving" ,fontname="Helvetica"];
+  Node3 [label="IhnLib.Entity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ihn_lib_1_1_entity.html"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ItemTakenFrom" ,fontname="Helvetica"];
+  Node4 [label="IhnLib.ControlItemSlot",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ihn_lib_1_1_control_item_slot.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ihn_lib_1_1_control.html"];
+  Node2 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Parent" ,fontname="Helvetica"];
+}

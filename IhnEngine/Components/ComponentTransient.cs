@@ -1,13 +1,9 @@
-//
-// ComponentTransient.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
 using System;
 
 namespace IhnLib {
-	public class ComponentTransient : Component{ //Will only collide with Tiles
-	}
+    /// <summary>
+    /// Causes an entity to never collide with other entities
+    /// </summary>
+    public class ComponentTransient : Component {
+    }
 }

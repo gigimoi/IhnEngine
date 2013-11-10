@@ -1,16 +1,19 @@
-//
-// CollisionHelper.cs
-//
-// Author:
-//       Gigimoi <gigimoigames@gmail.com>
-//
-// Copyright (c) 2013 Gigimoi
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace IhnLib {
+    /// <summary>
+    /// Aids in collision testing
+    /// </summary>
 	public class CollisionHelper {
+        
+        /// <summary>
+        /// Simple 1 size fits all collision test
+        /// </summary>
+        /// <param name="ihn">Ihn to compare with</param>
+        /// <param name="entity">Entity to compare</param>
+        /// <returns>Whether the entity collides with any solid in Ihn</returns>
 		public static bool Colliding(Ihn ihn, Entity entity) {
 			if(!entity.HasComp<ComponentSolid>()) {
 				return false;
@@ -69,7 +72,15 @@ namespace IhnLib {
 			}
 			return false;
 		}
-
+        /// <summary>
+        /// Gets the boundries of an entity
+        /// </summary>
+        /// <param name="entity">Entity to get bounds for</param>
+        /// <param name="pos">Position of the entity</param>
+        /// <param name="x">outs the x coord to this</param>
+        /// <param name="y">outs the y coord to this</param>
+        /// <param name="w">outs the width to this</param>
+        /// <param name="h">outs the height to this</param>
 		public static void GetBounds(Entity entity, ComponentPosition pos, out float x, out float y, out int w, out int h) {
 			x = pos.X;
 			y = pos.Y;

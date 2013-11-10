@@ -4,9 +4,16 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace IhnLib {
+    /// <summary>
+    /// Static class to aid with generated art
+    /// </summary>
 	public static class Art {
 		static Texture2D _pixel;
 		static Texture2D _none;
+        /// <summary>
+        /// Creates a white pixel and returns it, useful for art generation
+        /// </summary>
+        /// <returns>White pixel in texture form</returns>
 		public static Texture2D GetPixel() {
 			if(_pixel == null) {
 				_pixel = new Texture2D(Ihn.Instance.GraphicsDevice, 1, 1);
@@ -14,6 +21,10 @@ namespace IhnLib {
 			}
 			return _pixel;
 		}
+        /// <summary>
+        /// Creates a blank 1x1 image and returns it, useful for art generation
+        /// </summary>
+        /// <returns>Blank pixel</returns>
 		public static Texture2D GetNone() {
 			if(_none == null) {
 				_none = new Texture2D(Ihn.Instance.GraphicsDevice, 1, 1);
@@ -21,6 +32,11 @@ namespace IhnLib {
 			}
 			return _none;
 		}
+        /// <summary>
+        /// Converts self to a color array
+        /// </summary>
+        /// <param name="self">Texture2D to convert</param>
+        /// <returns>Array of colors</returns>
 		public static Color[,] ToColArray(this Texture2D self) {
 			var data = new Color[self.Width * self.Height];
 			var fin = new Color[self.Width, self.Height];
@@ -32,6 +48,11 @@ namespace IhnLib {
 			}
 			return fin;
 		}
+        /// <summary>
+        /// Converts a color array to a texture
+        /// </summary>
+        /// <param name="self">Color array to convert</param>
+        /// <returns>Texture2D of color array</returns>
 		public static Texture2D ToTexture2D(this Color[,] self) {
 			var fin = new Texture2D(Ihn.Instance.GraphicsDevice, self.GetLength(0), self.GetLength(1));
 			var data = new Color[self.GetLength(0) * self.GetLength(1)];
@@ -43,9 +64,23 @@ namespace IhnLib {
 			fin.SetData<Color>(data);
 			return fin;
 		}
+        /// <summary>
+        /// Fills a texture with a rectangle of colors. Don't call this multiple times, use fill rectangles
+        /// </summary>
+        /// <param name="self">Texture to fill over</param>
+        /// <param name="area">Area to fill</param>
+        /// <param name="color">Color to fill with</param>
+        /// <returns>Texture with rectangle of color painted over it</returns>
 		public static Texture2D FillRectangle(this Texture2D self, Rectangle area, Color color) {
 			return FillRectangles(self, new List<Rectangle> { area }, color);
 		}
+        /// <summary>
+        /// Fills a texture with a rectangles of a color
+        /// </summary>
+        /// <param name="self">Texture to fill over</param>
+        /// <param name="areas">Areas to fill</param>
+        /// <param name="color">Color to fill with</param>
+        /// <returns>Texture with rectangles of color painted over it</returns>
 		public static Texture2D FillRectangles(this Texture2D self, List<Rectangle> areas, Color color) {
 			var col = self.ToColArray();
 			for(int k = 0; k < areas.Count; k++) {
