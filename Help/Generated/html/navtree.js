@@ -1,7 +1,14 @@
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
+  [ "Ihn Engine", "index.html", [
     [ "IhnEngine", "index.html", null ],
+    [ "An index of tutorials", "tutorials.html", [
+      [ "Getting Started", "tutorials.html#sectionGettingStarted", [
+        [ "The first subsection", "tutorials.html#subsection1", null ],
+        [ "The second subsection", "tutorials.html#subsection2", null ]
+      ] ]
+    ] ],
+    [ "Getting Started: The first step", "tutorialgettingstarted1.html", null ],
     [ "Packages", null, [
       [ "Packages", "namespaces.html", "namespaces" ],
       [ "Package Functions", "namespacemembers.html", [
@@ -21,14 +28,18 @@ var NAVTREE =
         [ "Variables", "functions_vars.html", null ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
+    ] ],
+    [ "Files", null, [
+      [ "File List", "files.html", "files" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"class_ihn_lib_1_1_font_kerning.html#af7b6418f56b69052aa21138c1206959b"
+"_8_n_e_t_framework_00_version_0Av4_80_8_assembly_attribute_8cs_source.html",
+"class_ihn_lib_1_1_drawable_font.html",
+"tutorials.html#subsection1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

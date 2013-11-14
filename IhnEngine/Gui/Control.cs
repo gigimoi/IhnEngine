@@ -191,12 +191,32 @@ namespace IhnLib {
         /// </summary>
         /// <param name="ihn">Ihn calling the render</param>
         /// <param name="spriteBatch">Spritebatch to render with</param>
-		public virtual void Render(Ihn ihn, SpriteBatch spriteBatch) {
-			for(int i = 0; i < Children.Count; i++) {
-				if(Children[i].Enabled) {
-					Children[i].Render(ihn, spriteBatch);
-				}
-			}
-		}
+        public virtual void Render(Ihn ihn, SpriteBatch spriteBatch) {
+        }
+        /// <summary>
+        /// Returns a list of renders to perform
+        /// </summary>
+        /// <returns>List of renders to perform</returns>
+        public List<List<Control>> GetRenders() {
+            return GetRenders(new List<List<Control>>(), 0);
+        }
+        /// <summary>
+        /// Subprocess of GetRenders, do not call
+        /// </summary>
+        /// <param name="list">List of renders</param>
+        /// <param name="depth">Depth in gui tree</param>
+        /// <returns>Updated list</returns>
+        public List<List<Control>> GetRenders(List<List<Control>> list, int depth) {
+            if (list.Count <= depth) {
+                list.Add(new List<Control>());
+            }
+            list[depth].Add(this);
+            for (int i = 0; i < Children.Count; i++) {
+                if (Children[i].Enabled) {
+                    list = Children[i].GetRenders(list, depth + 1);
+                }
+            }
+            return list;
+        }
 	}
 }

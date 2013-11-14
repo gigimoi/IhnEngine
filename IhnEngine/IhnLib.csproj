@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="mainpage.dox" />
+    <None Include="Tutorials.dox" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

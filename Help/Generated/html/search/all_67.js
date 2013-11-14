@@ -13,6 +13,7 @@ var searchData=
   ['globalmultiplier',['GlobalMultiplier',['../class_ihn_lib_1_1_component_gravity.html#a4c250ad612e0d15eb3f2f604cb3a0970',1,'IhnLib::ComponentGravity']]],
   ['grabitem',['GrabItem',['../class_ihn_lib_1_1_control_item_slot.html#ab716bb8327dac7f5b18b1ff766d70737',1,'IhnLib::ControlItemSlot']]],
   ['greenchannel',['GreenChannel',['../class_ihn_lib_1_1_font_common.html#a4d8e8f9894bbdf32f079380b9a496799',1,'IhnLib::FontCommon']]],
+  ['gui',['Gui',['../class_ihn_lib_1_1_gui.html',1,'IhnLib']]],
   ['gui',['Gui',['../class_ihn_lib_1_1_gui.html#ac3ac5de3034f6e70094e50b51bbfa926',1,'IhnLib::Gui']]],
-  ['gui',['Gui',['../class_ihn_lib_1_1_gui.html',1,'IhnLib']]]
+  ['getting_20started_3a_20the_20first_20step',['Getting Started: The first step',['../tutorialgettingstarted1.html',1,'']]]
 ];

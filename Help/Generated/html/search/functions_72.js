@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['rectangleof',['RectangleOf',['../class_ihn_lib_1_1_drawable_font.html#ace0290b21b4a811709847433f72acaba',1,'IhnLib::DrawableFont']]],
+  ['rectangleof',['RectangleOf',['../class_ihn_lib_1_1_drawable_font.html#ace0290b21b4a811709847433f72acaba',1,'IhnLib.DrawableFont.RectangleOf()'],['../class_ihn_lib_1_1_font_renderer.html#a88bdcfdb832cd6a91bb1b43bb9f15c9e',1,'IhnLib.FontRenderer.RectangleOf()']]],
   ['registerentityhascomponent',['RegisterEntityHasComponent',['../class_ihn_lib_1_1_ihn.html#acdd658f09ccd1d51b5158f0f650189e5',1,'IhnLib::Ihn']]],
   ['removecomp_3c_20t_20_3e',['RemoveComp&lt; T &gt;',['../class_ihn_lib_1_1_entity.html#af0dbe84a5f08f8353fcf9107ae72d60e',1,'IhnLib::Entity']]],
   ['removeentity',['RemoveEntity',['../class_ihn_lib_1_1_ihn.html#a3b49465fc870c338eead065514a9ce2f',1,'IhnLib::Ihn']]],

@@ -18,6 +18,7 @@ var searchData=
   ['fontkerning',['FontKerning',['../class_ihn_lib_1_1_font_kerning.html',1,'IhnLib']]],
   ['fontloader',['FontLoader',['../class_ihn_lib_1_1_font_loader.html',1,'IhnLib']]],
   ['fontpage',['FontPage',['../class_ihn_lib_1_1_font_page.html',1,'IhnLib']]],
+  ['fontrenderer',['FontRenderer',['../class_ihn_lib_1_1_font_renderer.html#a50aa37fa63bfcf17343db5115970042e',1,'IhnLib::FontRenderer']]],
   ['fontrenderer',['FontRenderer',['../class_ihn_lib_1_1_font_renderer.html',1,'IhnLib']]],
   ['forcetexturebuilds',['ForceTextureBuilds',['../class_ihn_lib_1_1_component_tilemap.html#a3a69d9f662f86ad873e021858a57f084',1,'IhnLib::ComponentTilemap']]]
 ];

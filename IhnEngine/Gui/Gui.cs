@@ -57,7 +57,14 @@ namespace IhnLib {
 #endif
 		}
 		private void Render(object sender, EventArgs e) {
-			RootControl.Render(Ihn.Instance, Ihn.Instance.SBatch);
+            if (RootControl != null && RootControl.Enabled) {
+                var renders = RootControl.GetRenders();
+                for (int i = 0; i < renders.Count; i++) {
+                    for (int j = 0; j < renders[i].Count; j++) {
+                        renders[i][j].Render(Ihn.Instance, Ihn.Instance.SBatch);
+                    }
+                }
+            }
 			if(ItemMoving != null && ItemMoving.HasComp<ComponentInventorySprite>()) {
 				ItemMoving.GetComp<ComponentInventorySprite>().Renderer.Invoke(Ihn.Instance, ItemMoving, Ihn.Instance.SBatch, MouseHelper.X - 16, MouseHelper.Y - 16);
 			}
