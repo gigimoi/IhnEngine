@@ -123,11 +123,24 @@ namespace IhnLib {
 				}
 			}
 		}
-        /// <summary>
-        /// Registers that an entity has a component
-        /// </summary>
-        /// <param name="t">Component type</param>
-        /// <param name="entity">Entity that has the component</param>
+		/// <summary>
+		/// Checks if the ihn contains an entity
+		/// </summary>
+		/// <param name="entity">Entity to check for</param>
+		/// <returns>True if Ihn contains entity</returns>
+		public bool ContainsEntity(Entity entity) {
+			for (int i = 0; i < Entities.Count; i++) {
+				if (Entities[i] == entity) {
+					return true;
+				}
+			}
+			return false;
+		}
+		/// <summary>
+		/// Registers that an entity has a component
+		/// </summary>
+		/// <param name="t">Component type</param>
+		/// <param name="entity">Entity that has the component</param>
 		public void RegisterEntityHasComponent(Type t, Entity entity) {
 			if(!_ecdict.ContainsKey(t)) {
 				_ecdict.Add(t, new List<Entity> { entity });

@@ -21,6 +21,26 @@ namespace IhnLib {
 				pos.X = follow.ToFollow.GetComp<ComponentPosition>().X + follow.Offset.X;
 				pos.Y = follow.ToFollow.GetComp<ComponentPosition>().Y + follow.Offset.Y;
 			}
+			if (follow.FollowRotation) {
+				var rot = 0f;
+				if (follow.ToFollow.HasComp<ComponentMultiSprite>()) {
+					rot = follow.ToFollow.GetComp<ComponentMultiSprite>().Rotation;
+				}
+				else if (follow.ToFollow.HasComp<ComponentSprite>()) {
+					rot = follow.ToFollow.GetComp<ComponentSprite>().Rotation;
+				}
+				if (entity.HasComp<ComponentMultiSprite>()) {
+					entity.GetComp<ComponentMultiSprite>().Rotation = rot;
+				}
+				if (entity.HasComp<ComponentSprite>()) {
+					entity.GetComp<ComponentSprite>().Rotation = rot;
+				}
+			}
+			if (follow.FollowDestroy) {
+				if (!ihn.ContainsEntity(follow.ToFollow)) {
+					Ihn.Instance.RemoveEntity(entity);
+				}
+			}
 		}
         /// <summary>
         /// This system does not render
