@@ -38,24 +38,25 @@ namespace IhnLib {
         /// <param name="path"></param>
 		public TileType(string path) {
 			var file = new IniFile(path);
-			RootTexture = file.IniReadValue("Root", "Image");
-			CutIn = Int32.Parse(file.IniReadValue("Root", "Cutin"));
-			Solid = Boolean.Parse(file.IniReadValue("Root", "Solid"));
+			RootTexture = file.ReadString("Root", "Image", "error");
+			CutIn = int.Parse(file.ReadString("Root", "Cutin", "-1"));
+			Solid = bool.Parse(file.ReadString("Root", "Solid", "error"));
 			TSpawner = null;
-			Layer = Int32.Parse(file.IniReadValue("Root", "Layer"));
+			Layer = int.Parse(file.ReadString("Root", "Layer", "-1"));
 			Flairs = new List<Flair>();
-			int flairCount = Int32.Parse(file.IniReadValue("Root", "Flairs"));
+			int flairCount = file.ReadInteger("Root", "Flairs", Int32.MaxValue);
 			for(int i = 1; i <= flairCount; i++) {
 				Flairs.Add(new Flair(
-					file.IniReadValue("Flair" + i, "Image"),
-					Int32.Parse(file.IniReadValue("Flair" + i, "Frequency")),
-					Boolean.Parse(file.IniReadValue("Flair" + i, "OnNorth")),
-					Boolean.Parse(file.IniReadValue("Flair" + i, "OnEast")),
-					Boolean.Parse(file.IniReadValue("Flair" + i, "OnSouth")),
-					Boolean.Parse(file.IniReadValue("Flair" + i, "OnWest")),
-					Int32.Parse(file.IniReadValue("Flair" + i, "MinDepth")),
-					Int32.Parse(file.IniReadValue("Flair" + i, "MaxDepth"))));
+					file.ReadString("Flair" + i, "Image", "error"),
+					int.Parse(file.ReadString("Flair" + i, "Frequency", "-2")),
+					bool.Parse(file.ReadString("Flair" + i, "OnNorth", "true")),
+					bool.Parse(file.ReadString("Flair" + i, "OnEast", "true")),
+					bool.Parse(file.ReadString("Flair" + i, "OnSouth", "true")),
+					bool.Parse(file.ReadString("Flair" + i, "OnWest", "true")),
+					int.Parse(file.ReadString("Flair" + i, "MinDepth", "0")),
+					int.Parse(file.ReadString("Flair" + i, "MaxDepth", "0"))));
 			}
+			Console.WriteLine(Solid);
 		}
         /// <summary>
         /// Texture that is rendered first and always

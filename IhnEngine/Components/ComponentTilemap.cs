@@ -31,24 +31,25 @@ namespace IhnLib {
         /// <summary>
         /// 2D array of tile types
         /// </summary>
-		public TileType[,] Map = new TileType[500, 200];
+		public TileType[,] Map = new TileType[100, 100];
         /// <summary>
         /// 2D array of lists that the tiles collide into
         /// </summary>
-		public List<Direction>[,] MapSolids = new List<Direction>[500, 200];
+		public List<Direction>[,] MapSolids = new List<Direction>[100, 100];
         /// <summary>
         /// 2D array of seeds used to generate flairs
         /// </summary>
-		public int[,] Seeds = new int[500, 200];
+		public int[,] Seeds = new int[100, 100];
         /// <summary>
         /// List of vectors to force texture rebuilds at
         /// </summary>
+		[NonSerialized]
 		public List<Vector2> ForceTextureBuilds = new List<Vector2>();
         /// <summary>
         /// Nonserialized 2D array of textures, regenerated when loaded
         /// </summary>
 		[NonSerialized]
-		public Texture2D[,] Textures = new Texture2D[500, 200];
+		public Texture2D[,] Textures = new Texture2D[100, 100];
 		Random _r = new Random();
         /// <summary>
         /// Instantiates a new default tilemap

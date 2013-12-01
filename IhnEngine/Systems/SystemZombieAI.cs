@@ -52,7 +52,8 @@ namespace IhnLib {
 			}
 			Vector2 nextPos;
 			if(ai.Path.Count > 1) {
-				nextPos = ai.Path[ai.PathStep + 1] * ai.TileSize + new Vector2(ai.TileSize / 2, ai.TileSize / 2);
+				var vector = ai.Path[ai.PathStep + 1].ToVector() * ai.TileSize + new Position(ai.TileSize / 2, ai.TileSize / 2).ToVector();
+				nextPos = vector;
 			}
 			else {
 				nextPos = new Vector2(Following.GetComp<ComponentPosition>().X, Following.GetComp<ComponentPosition>().Y);

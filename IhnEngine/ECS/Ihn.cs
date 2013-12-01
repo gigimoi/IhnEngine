@@ -56,7 +56,6 @@ namespace IhnLib {
         /// </summary>
 		public static void CopyDebugAssets() {
 			var dir = new DirectoryInfo("assets");
-			var files = new DirectoryInfo("../../assets");
 			if(dir.Exists) {
 				foreach(FileInfo file in dir.GetFiles()) {
 					file.Delete();

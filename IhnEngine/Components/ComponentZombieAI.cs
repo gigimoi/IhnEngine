@@ -15,7 +15,7 @@ namespace IhnLib {
         /// <summary>
         /// Current path to follow
         /// </summary>
-		public List<Vector2>Path;
+		public List<Position>Path;
         /// <summary>
         /// Where is the zombie heading to XCoord
         /// </summary>
@@ -53,7 +53,7 @@ namespace IhnLib {
 		public ComponentZombieAI(float speed, int tileSize, int swipeTime) {
 			Speed = speed;
 			TileSize = tileSize;
-			Path = new List<Vector2>();
+			Path = new List<Position>();
 			MaxSwipeTime = swipeTime;
 		}
 	}

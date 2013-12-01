@@ -24,7 +24,7 @@ namespace IhnLib {
 			}
 			if(path != "" && path != null) {
 				if(!rscs[typeof(T)].ContainsKey(path)) {
-					var newPath = Path.GetFullPath(path).Substring(3);
+					var newPath = Path.GetFullPath(path);
 					var dat = Ihn.Instance.Content.Load<T>(newPath);
 
 					if(dat.GetType() == typeof(Texture2D)) {

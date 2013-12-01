@@ -12,7 +12,7 @@ namespace IhnLib {
         /// Serializes an object and saves it to a path. Simplest savefile possible
         /// </summary>
         /// <param name="obj">Object to save</param>
-        /// <param name="saveFile">Path to save to</param>
+        /// <param name="saveFile">Path to save to<6/param>
         public static void SaveObject(Object obj, string saveFile) {
             BinaryFormatter bin = new BinaryFormatter();
             var stream = new FileStream(saveFile, FileMode.OpenOrCreate);

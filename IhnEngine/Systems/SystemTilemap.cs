@@ -77,7 +77,15 @@ namespace IhnLib {
                 _r = new Random(seed);
                 if (tex == null || tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
                     _r = new Random(seed + (Spaz ?  (int)(DateTime.UtcNow.Ticks * seed) : 0));
-                    while (tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
+                    if(tm.ForceTextureBuilds == null) {
+						tm.ForceTextureBuilds = new List<Vector2>();
+						for(int x = 0; x < tm.Map.GetLength(0); x++) {
+							for(int y = 0; y < tm.Map.GetLength(1); y++) {
+								tm.ForceTextureBuilds.Add(new Vector2(x, y));
+							}
+						}
+					}
+					while (tm.ForceTextureBuilds.Contains(new Vector2(i, j))) {
                         tm.ForceTextureBuilds.Remove(new Vector2(i, j));
                     }
                     RebuildTileTexture(tm, i, j, ref tile, solid, ref tex);
@@ -154,6 +162,8 @@ namespace IhnLib {
         //Cuts into a rectangle
 		private void RebuildTileTexture(ComponentTilemap tm, int i, int j, ref TileType tile, List<Direction> solid, ref Texture2D tex) {
 			tex = Rsc.Load<Texture2D>(tile.RootTexture);
+			//TODO: GetData broken on linux/mac, implement
+			/*
 			if(!solid.Contains(Direction.North)) {
 				tex = tex.FillRectangle(new Rectangle(0, 0, tex.Width, tile.CutIn), Color.Transparent);
 				var rects = new List<Rectangle>();
@@ -169,6 +179,7 @@ namespace IhnLib {
 				}
 				tex = tex.FillRectangles(rects, Color.Transparent);
 			}
+			*/			
 			tm.Textures[i, j] = tex;
 		}
         /// <summary>
