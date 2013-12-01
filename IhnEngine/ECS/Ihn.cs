@@ -31,6 +31,11 @@ namespace IhnLib {
         /// </summary>
 		public static Ihn Instance;
 
+        private bool vsync;
+        private int height;
+        private int width;
+        private bool fullscreen;
+
         /// <summary>
         /// Instantiates a new Ihn. Only call this once
         /// </summary>
@@ -40,15 +45,30 @@ namespace IhnLib {
         /// <param name="fullscreen">Guess</param>
 		public Ihn(int width, int height, bool vsync, bool fullscreen = false) {
 			graphics = new GraphicsDeviceManager(this);            
-			graphics.SynchronizeWithVerticalRetrace = vsync;
-			graphics.PreferredBackBufferHeight = height;
-			graphics.PreferredBackBufferWidth = width;
-			graphics.PreferMultiSampling = true;
-			graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
-			graphics.PreferredBackBufferFormat = SurfaceFormat.Rg32;
-			graphics.IsFullScreen = fullscreen;
 			Content.RootDirectory = Directory.GetCurrentDirectory().Substring(0, 3);
 			Instance = this;
+
+            SBatch = new SpriteBatch(graphics.GraphicsDevice);
+
+            graphics.IsFullScreen = fullscreen;
+
+            this.vsync = vsync;
+            this.height = height;
+            this.width = width;
+            this.fullscreen = fullscreen;
+		}
+
+        /// <summary>
+        /// Initialize this instance.
+        /// </summary>
+		protected override void Initialize () {
+            graphics.SynchronizeWithVerticalRetrace = vsync;
+            graphics.PreferredBackBufferHeight = height;
+            graphics.PreferredBackBufferWidth = width;
+            graphics.PreferMultiSampling = true;
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
+            graphics.PreferredBackBufferFormat = SurfaceFormat.Rg32;
+            this.Window.AllowUserResizing = false;
 		}
 
         /// <summary>
@@ -222,14 +242,6 @@ namespace IhnLib {
 				return Systems.Count;
 			}
 		}
-
-        /// <summary>
-        /// Extended from Game
-        /// </summary>
-		protected override void Initialize() {
-			base.Initialize();
-		}
-        /// <summary>
         /// Triggers "Ihn Load Rsc" and initializes spritebatch
         /// </summary>
 		protected override void LoadContent()
