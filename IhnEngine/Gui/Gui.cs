@@ -69,7 +69,6 @@ namespace IhnLib {
 				ItemMoving.GetComp<ComponentInventorySprite>().Renderer.Invoke(Ihn.Instance, ItemMoving, Ihn.Instance.SBatch, MouseHelper.X - 16, MouseHelper.Y - 16);
 			}
 			else if(!Ihn.Instance.IsMouseVisible){
-				Console.WriteLine("ASD");
                 Ihn.Instance.SBatch.Draw(Rsc.Load<Texture2D>(CursorImg), new Rectangle((int)(MouseHelper.X - 8), (int)(MouseHelper.Y - 8), 16, 16), null, Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, (int)0);
 			}
 		}
