@@ -39,11 +39,11 @@
     <Reference Include="Lidgren.Network">
       <HintPath>..\..\..\..\..\..\..\..\..\..\usr\lib\monogame\Lidgren.Network.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="MonoGame.Framework.Linux">
       <HintPath>..\..\..\..\..\..\..\..\..\..\usr\lib\monogame\MonoGame.Framework.Linux.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
