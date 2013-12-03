@@ -50,8 +50,6 @@ namespace IhnLib {
 
             SBatch = new SpriteBatch(graphics.GraphicsDevice);
 
-            graphics.IsFullScreen = fullscreen;
-
             this.vsync = vsync;
             this.height = height;
             this.width = width;
@@ -66,8 +64,9 @@ namespace IhnLib {
             graphics.PreferredBackBufferHeight = height;
             graphics.PreferredBackBufferWidth = width;
             graphics.PreferMultiSampling = true;
-            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
-            graphics.PreferredBackBufferFormat = SurfaceFormat.Rg32;
+			//graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
+			//graphics.PreferredBackBufferFormat = SurfaceFormat.Rg32;
+			graphics.IsFullScreen = fullscreen;
             this.Window.AllowUserResizing = false;
 		}
 
@@ -242,6 +241,7 @@ namespace IhnLib {
 				return Systems.Count;
 			}
 		}
+		/// <summary>
         /// Triggers "Ihn Load Rsc" and initializes spritebatch
         /// </summary>
 		protected override void LoadContent()
